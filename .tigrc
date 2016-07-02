@@ -10,5 +10,5 @@ bind refs 4 ?git rebase -i %(branch)
 bind main P ?git cherry-pick %(commit)
 bind main C ?git checkout %(commit)
 
-bind refs P ?git push origin %(branch)
+bind refs P ?git push origin %(branch) --tags
 
