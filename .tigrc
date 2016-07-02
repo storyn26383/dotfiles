@@ -1,3 +1,9 @@
+set main-view-id = yes
+set refs-view-id = yes
+
+set split-view-width = 80%
+set split-view-height = 80%
+
 bind main 4 ?git rebase -i %(commit)
 bind refs 4 ?git rebase -i %(branch)
 
