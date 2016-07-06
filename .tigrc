@@ -5,6 +5,7 @@ set split-view-width = 80%
 set split-view-height = 80%
 
 bind main 4 ?git rebase -i %(commit)
+bind refs 0 ?git pull
 bind main S ?git stash
 bind main P ?git cherry-pick %(commit)
 bind main C ?git checkout %(commit)
