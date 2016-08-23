@@ -50,11 +50,12 @@ ZSH_THEME="bullet-train"
 plugins=(git git-flow laravel5 composer)
 
 # User configuration
+export PATH="$HOME/.composer/vendor/bin:vendor/bin"
+export PATH="$PATH:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin"
+export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="$HOME/.composer/vendor/bin:$PATH"
-export PATH="vendor/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
