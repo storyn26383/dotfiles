@@ -2,7 +2,7 @@
 	name = Sasaya
 	email = storyn26383@gmail.com
 [core]
-	excludesfile = /Users/Sasaya/.gitignore_global
+	excludesfile = /home/sasaya/.gitignore_global
 	ignorecase = false
 [mergetool]
 	keepBackup = false

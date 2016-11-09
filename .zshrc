@@ -10,9 +10,6 @@ plugins=(git base16-shell vi-mode)
 # User configuration
 export PATH="$HOME/.composer/vendor/bin"
 export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
-export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
-export PATH="$PATH:/usr/local/opt/findutils/libexec/gnubin"
-export PATH="$PATH:/usr/local/opt/gnu-sed/libexec/gnubin"
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # Load on my zsh
@@ -44,11 +41,10 @@ compdef scp=ssh
 export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore=.git -g ''"
 
 # Powerline
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+source /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
 
 # nvm & rvm & php
 source $DOTFILES/scripts/load
-
 
 # aliases
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
