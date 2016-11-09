@@ -47,7 +47,7 @@ ZSH_THEME="bullet-train"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow laravel5 composer)
+plugins=(git)
 
 # User configuration
 export PATH="$HOME/.composer/vendor/bin:vendor/bin"
@@ -88,23 +88,11 @@ export EDITOR=vim
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias phpunit="vendor/bin/phpunit --colors"
 alias ctphp="ctags -R --fields=+aimS --languages=php"
-alias vm="ssh vagrant@127.0.0.1 -p 2222"
 alias sb="subl"
 alias a="php artisan"
 alias s="php artisan serve --host=0.0.0.0"
 alias am="php artisan migrate"
-alias amm="php artisan make:model"
-alias amc="php artisan make:controller"
-alias amr="php artisan make:request"
-alias amp="php artisan make:policy"
-alias ammg="php artisan make:migration"
-alias ammw="php artisan make:middleware"
-alias avp="php artisan vendor:publish"
-alias avpf="php artisan vendor:publish --force"
-alias aci="php artisan cms:install"
-alias acr="php artisan cms:reset"
 alias www="cd /Users/Sasaya/Site/www"
 alias gta="git tag -a"
 alias gtl="git tag -l"
