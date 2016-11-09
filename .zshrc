@@ -50,7 +50,7 @@ ZSH_THEME="bullet-train"
 plugins=(git)
 
 # User configuration
-export PATH="$HOME/.composer/vendor/bin:vendor/bin"
+export PATH="vendor/bin:$HOME/.composer/vendor/bin"
 export PATH="$PATH:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin"
 export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 
