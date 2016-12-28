@@ -1,0 +1,9 @@
+--recurse
+--links=no
+--languages=PHP
+--exclude=.git
+--exclude=node_modules
+--exclude=storage
+--PHP-kinds=cf
+--regex-PHP=/(abstract )?(class|interface|trait) ([^ ]+)/\3/c/
+--regex-PHP=/(abstract |public |protected |private |static )+function ([^ \(]+)/\2/f/
