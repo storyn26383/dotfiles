@@ -55,7 +55,6 @@ export PATH="$PATH:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin"
 export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # export MANPATH="/usr/local/man:$MANPATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
