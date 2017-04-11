@@ -47,7 +47,7 @@ ZSH_THEME="bullet-train"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git mosh)
+plugins=(git)
 
 # User configuration
 export PATH="vendor/bin:$HOME/.composer/vendor/bin"
@@ -83,6 +83,8 @@ export EDITOR=vim
 [ -r ~/.ssh/config ] && hosts=($(cat ~/.ssh/config | sed -ne 's/Host[=\t ]//p')) || hosts=()
 zstyle ':completion:*:hosts' hosts $hosts
 zstyle ':completion:*' users off
+compdef mosh=ssh
+compdef scp=ssh
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
