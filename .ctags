@@ -5,5 +5,6 @@
 --exclude=node_modules
 --exclude=storage
 --PHP-kinds=cf
---regex-PHP=/(abstract )?(class|interface|trait) ([A-Za-z_]+)/\3/c/
---regex-PHP=/(abstract |public |protected |private |static )+function ([A-Za-z_]+)/\2/f/
+--regex-PHP=/const ([A-Za-z0-9_]+)/\1/d/
+--regex-PHP=/(abstract )?(class|interface|trait) ([A-Za-z0-9_]+)/\3/c/
+--regex-PHP=/(abstract |public |protected |private |static )+function ([A-Za-z0-9_]+)/\2/f/
