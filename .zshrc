@@ -98,6 +98,7 @@ compdef scp=ssh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ctphp="ctags -R --fields=+aimS --languages=php"
 alias sb="subl"
+alias y="ydict.js"
 alias a="php artisan"
 alias s="php artisan serve --host=0.0.0.0"
 alias am="php artisan migrate"
