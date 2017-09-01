@@ -9,6 +9,8 @@ export ZSH=/Users/Sasaya/.oh-my-zsh
 # ZSH_THEME="gentoo"
 ZSH_THEME="bullet-train"
 
+[ -r ~/.themerc ] && . ~/.themerc
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 

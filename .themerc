@@ -1,0 +1,17 @@
+BULLETTRAIN_PROMPT_ORDER=(
+    time
+    status
+    custom
+    # context
+    dir
+    # perl
+    # ruby
+    # virtualenv
+    # nvm
+    # aws
+    # go
+    # elixir
+    git
+    # hg
+    cmd_exec_time
+)
