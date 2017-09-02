@@ -13,7 +13,7 @@
 		"session":                    { "fg": "gray0", "bg": "gray10", "attrs": ["bold"] },
 		"date":                       { "fg": "gray9", "bg": "gray3", "attrs": [] },
 		"time":                       { "fg": "gray10", "bg": "gray3", "attrs": ["bold"] },
-		"time:divider":               { "fg": "gray5", "bg": "gray3", "attrs": [] },
+		"time:divider":               { "fg": "gray6", "bg": "gray3", "attrs": [] },
 		"email_alert":                "warning:regular",
 		"email_alert_gradient":       { "fg": "white", "bg": "yellow_orange_red", "attrs": ["bold"] },
 		"hostname":                   { "fg": "gray0", "bg": "white", "attrs": ["bold"] },
