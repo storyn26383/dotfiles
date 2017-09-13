@@ -5,11 +5,10 @@ export ZSH=/Users/Sasaya/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="aussiegeek"
-# ZSH_THEME="gentoo"
-ZSH_THEME="bullet-train"
+# ZSH_THEME="ys"
+# ZSH_THEME="bullet-train"
 
-[ -r ~/.themerc ] && . ~/.themerc
+# [ -r ~/.themerc ] && . ~/.themerc
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -87,6 +86,9 @@ zstyle ':completion:*:hosts' hosts $hosts
 zstyle ':completion:*' users off
 compdef mosh=ssh
 compdef scp=ssh
+
+# Powerline
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
