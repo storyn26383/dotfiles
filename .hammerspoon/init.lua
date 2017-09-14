@@ -32,7 +32,7 @@ local keys = {
   bind({ mods = {'ctrl'}, key = 'a' }, { mods = {'command'}, key = 'left' })
 }
 
-local function handleGlobalAppEvent(name, event, app)
+hs.application.watcher.new(function (name, event, app)
   if event == hs.application.watcher.activated then
     local method
 
@@ -44,7 +44,60 @@ local function handleGlobalAppEvent(name, event, app)
       key[method](key)
     end
   end
-end
+end):start()
 
-appsWatcher = hs.application.watcher.new(handleGlobalAppEvent)
-appsWatcher:start()
+local alertStyle = {
+  textStyle = {
+    paragraphStyle = {
+      alignment = 'center'
+    }
+  }
+}
+
+local showKeyPressHandler = hs.eventtap.new(
+  {hs.eventtap.event.types.keyDown},
+  function (e)
+    local duration = 1
+    local flags = e:getFlags()
+    local key = hs.keycodes.map[e:getKeyCode()]
+    local mods = ''
+
+    if     key == 'return' then key = '⏎'
+    elseif key == 'delete' then key = '⌫'
+    elseif key == 'escape' then key = '⎋'
+    elseif key == 'space'  then key = 'SPC'
+    elseif key == 'up'     then key = '↑'
+    elseif key == 'down'   then key = '↓'
+    elseif key == 'left'   then key = '←'
+    elseif key == 'right'  then key = '→'
+    end
+
+    if flags.ctrl  then mods = mods .. '^' end
+    if flags.shift then mods = mods .. '⇧' end
+    if flags.alt   then mods = mods .. '⌥' end
+    if flags.cmd   then mods = mods .. '⌘' end
+
+    if (not (flags.shift or flags.cmd or flags.alt or flags.ctrl)) then
+      duration = 0.2
+    end
+
+    hs.alert.show(mods .. string.upper(key), alertStyle, duration)
+  end
+)
+
+local showKeyPress = false
+
+hs.hotkey.bind({'cmd', 'shift', 'ctrl'}, 'p', function ()
+  showKeyPress = not showKeyPress
+
+  if showKeyPress then
+    hs.alert.show('Enable Keypress Show Mode', alertStyle, 1.5)
+    showKeyPressHandler:start()
+  else
+    showKeyPressHandler:stop()
+    hs.alert.show('Disable Keypress Show Mode', alertStyle, 1.5)
+  end
+end)
+
+hs.hotkey.bind({'cmd', 'shift', 'ctrl'}, 'r', function () hs.reload() end)
+hs.notify.new({ title = 'Hammerspoon', informativeText = 'Config loaded.' }):send()
