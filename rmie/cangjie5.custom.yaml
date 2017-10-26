@@ -1,0 +1,9 @@
+# Rime cangjie5 settings
+# encoding: utf-8
+
+patch:
+  abc_segmentor/extra_tags: {}
+  translator/enable_sentence: false
+  translator/preedit_format:
+    - "xform/^([a-z]*)$/\\U$1\\E/"
+    - "xlit|ABCDEFGHIJKLMNOPQRSTUVWXYZ|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
