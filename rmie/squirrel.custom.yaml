@@ -5,3 +5,5 @@ patch:
   style/font_point: 16
   # style/inline_preedit: false
   style/color_scheme: dark_temple
+  app_options/com.runningwithcrayons.Alfred-3:
+    ascii_mode: true
