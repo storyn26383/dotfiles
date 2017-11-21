@@ -4,5 +4,6 @@
 patch:
   abc_segmentor/extra_tags: {}
   translator/enable_sentence: false
+  translator/enable_user_dict: false
   translator/enable_completion: false
   translator/preedit_format/@0: "xform/^([a-z]*)$/\\U$1\\E/"
