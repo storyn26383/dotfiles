@@ -98,6 +98,7 @@ source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ag="ag --ignore '*.lock'"
 alias ctphp="ctags -R --fields=+aimS --languages=php"
 alias sb="subl"
 alias y="ydict.js"
