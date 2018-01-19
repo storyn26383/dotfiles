@@ -87,6 +87,9 @@ zstyle ':completion:*' users off
 compdef mosh=ssh
 compdef scp=ssh
 
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Powerline
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
@@ -99,9 +102,12 @@ source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ag="ag --ignore '*.lock'"
+alias ls="ls --color"
 alias ctphp="ctags -R --fields=+aimS --languages=php"
 alias sb="subl"
 alias y="ydict.js"
+alias c="caddy -conf ~/Caddyfile"
+alias v="vagrant"
 alias a="php artisan"
 alias s="php artisan serve --host=0.0.0.0"
 alias am="php artisan migrate"
