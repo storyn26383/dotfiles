@@ -1,6 +1,6 @@
 [user]
-    name = Sasaya
-    email = storyn26383@gmail.com
+	name = Sasaya
+	email = storyn26383@gmail.com
 [core]
-    excludesfile = /Users/Sasaya/.gitignore_global
+	excludesfile = /Users/Sasaya/.gitignore_global
 	ignorecase = false
