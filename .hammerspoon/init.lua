@@ -1,6 +1,14 @@
 -- hs.eventtap.keyStroke(modifiers, character[, delay])
 -- hs.hotkey.bind(mods, key, message, pressedfn, releasedfn, repeatfn)
 
+local alertStyle = {
+  textStyle = {
+    paragraphStyle = {
+      alignment = 'center'
+    }
+  }
+}
+
 local function bind(from, to, pressedfn, releasedfn)
   local fn = function ()
     if pressedfn ~= nil then pressedfn() end
@@ -13,21 +21,24 @@ end
 -- global
 bind({ key = 'rightctrl' }, { key = 'fn' })
 
-local disableDelete = bind({ key = 'delete' }, nil)
-bind(
-  { mods = {'ctrl'}, key = 'h' },
-  { key = 'delete' },
-  function () disableDelete:disable() end,
-  function () disableDelete:enable() end
-)
+-- local disableBackspace = bind({ key = 'delete' }, nil, function ()
+--   hs.alert.show('BACKSPACE KEY IS FORBIDDEN', alertStyle)
+-- end)
 
 -- disable when a specific application is active
 local keys = {
+  -- bind(
+  --   { mods = {'ctrl'}, key = 'h' },
+  --   { key = 'delete' },
+  --   function () disableBackspace:disable() end,
+  --   function () disableBackspace:enable() end
+  -- ),
+  bind({ mods = {'ctrl'}, key = 'h' }, { key = 'delete' }),
   bind({ mods = {'ctrl'}, key = '[' }, { key = 'escape' }),
-  bind({ mods = {'ctrl'}, key = 'p' }, { key = 'up' }),
-  bind({ mods = {'ctrl'}, key = 'n' }, { key = 'down' }),
-  bind({ mods = {'ctrl'}, key = 'b' }, { key = 'left' }),
-  bind({ mods = {'ctrl'}, key = 'f' }, { key = 'right' }),
+  -- bind({ mods = {'ctrl'}, key = 'p' }, { key = 'up' }),
+  -- bind({ mods = {'ctrl'}, key = 'n' }, { key = 'down' }),
+  -- bind({ mods = {'ctrl'}, key = 'b' }, { key = 'left' }),
+  -- bind({ mods = {'ctrl'}, key = 'f' }, { key = 'right' }),
   bind({ mods = {'ctrl'}, key = 'e' }, { mods = {'command'}, key = 'right' }),
   bind({ mods = {'ctrl'}, key = 'a' }, { mods = {'command'}, key = 'left' })
 }
@@ -45,14 +56,6 @@ hs.application.watcher.new(function (name, event, app)
     end
   end
 end):start()
-
-local alertStyle = {
-  textStyle = {
-    paragraphStyle = {
-      alignment = 'center'
-    }
-  }
-}
 
 local showKeyPressHandler = hs.eventtap.new(
   {hs.eventtap.event.types.keyDown},
