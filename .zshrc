@@ -93,6 +93,14 @@ compdef scp=ssh
 # Powerline
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# rvm
+export RVM_DIR="$HOME/.rvm"
+[ -s "$RVM_DIR/scripts/rvm" ] && \. "$RVM_DIR/scripts/rvm"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -103,15 +111,11 @@ source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ag="ag --ignore '*.lock'"
 alias ls="ls --color"
-alias ctphp="ctags -R --fields=+aimS --languages=php"
-alias sb="subl"
 alias y="ydict.js"
-alias c="caddy -conf ~/Caddyfile"
 alias v="vagrant"
 alias a="php artisan"
 alias s="php artisan serve --host=0.0.0.0"
-alias am="php artisan migrate"
-alias www="cd /Users/Sasaya/Site/www"
+alias www="cd $HOME/Site/www"
 alias gta="git tag -a"
 alias gtl="git tag -l"
 alias gtd="git tag -d"
