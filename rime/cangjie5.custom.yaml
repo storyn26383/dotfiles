@@ -3,7 +3,11 @@
 
 patch:
   abc_segmentor/extra_tags: {}
+  translator/enable_encoder: false
   translator/enable_sentence: false
   translator/enable_user_dict: false
   translator/enable_completion: false
   translator/preedit_format/@0: "xform/^([a-z]*)$/\\U$1\\E/"
+  key_binder/bindings:
+    - { when: has_menu, accept: Space, send: Space }
+    - { when: composing, accept: Space, send: Escape }
