@@ -52,6 +52,7 @@ plugins=(git base16-shell)
 
 # User configuration
 export PATH="vendor/bin:$HOME/.composer/vendor/bin"
+export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin"
 export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 
