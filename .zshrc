@@ -81,6 +81,10 @@ export EDITOR=vim
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# history file
+export HISTSIZE=2000
+export SAVEHIST=2000
+
 # ssh hostname completion
 [ -r ~/.ssh/config ] && hosts=($(cat ~/.ssh/config | sed -ne 's/Host[=\t ]//p')) || hosts=()
 zstyle ':completion:*:hosts' hosts $hosts
