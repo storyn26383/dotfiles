@@ -1,0 +1,52 @@
+#!/bin/bash
+
+load-nvm () {
+  echo 'Loading nvm...'
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+}
+
+load-rvm () {
+  echo 'Loading rvm...'
+  export RVM_DIR="$HOME/.rvm"
+  export PATH="$PATH:$RVM_DIR/bin"
+  [ -s "$NVM_DIR/scripts/rvm" ] && \. "$NVM_DIR/scripts/rvm"
+}
+
+usage () {
+  echo 'Usage: load [SCRIPT...]'
+  echo 'Supported scripts: nvm, rvm'
+}
+
+if [ $# -ne 0 ]; then
+  while [ $# != 0 ]; do
+    case $1 in
+      nvm)
+        load-nvm
+        ;;
+
+      rvm)
+        load-rvm
+        ;;
+
+      help|-h|-help|--help)
+        usage
+        exit
+        ;;
+
+      *)
+        echo 'Unknow script:' $1
+        usage
+        exit 1
+        ;;
+    esac
+
+    shift
+  done
+else
+  load-nvm
+  load-rvm
+fi
+
+echo 'Done!'
+exit

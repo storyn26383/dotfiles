@@ -95,12 +95,17 @@ compdef scp=ssh
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # rvm
-export RVM_DIR="$HOME/.rvm"
-[ -s "$RVM_DIR/scripts/rvm" ] && \. "$RVM_DIR/scripts/rvm"
+# export RVM_DIR="$HOME/.rvm"
+# export PATH="$PATH:$RVM_DIR/bin"
+# [ -s "$NVM_DIR/scripts/rvm" ] && \. "$NVM_DIR/scripts/rvm"
+
+# load scripts completion
+_load-completion () { compadd -- nvm rvm }
+compdef _load-completion load
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
