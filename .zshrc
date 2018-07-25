@@ -51,8 +51,8 @@ export ZSH=$HOME/.oh-my-zsh
 plugins=(git base16-shell)
 
 # User configuration
-export PATH="vendor/bin:$HOME/.composer/vendor/bin"
-export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="vendor/bin"
+export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$PATH:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin"
 export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 
@@ -124,5 +124,3 @@ alias s="php artisan serve --host=0.0.0.0"
 alias gta="git tag -a"
 alias gtl="git tag -l"
 alias gtd="git tag -d"
-alias fm="find ./ -type f -print0 | xargs -0 chmod 644
-find ./ -type d -print0 | xargs -0 chmod 755"
