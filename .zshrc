@@ -1,4 +1,5 @@
 export ZSH=$HOME/.oh-my-zsh
+export DOTFILES=$HOME/dotfiles
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -12,6 +13,7 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$PATH:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin"
 export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 
+# Load on my zsh
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -34,24 +36,15 @@ zstyle ':completion:*' users off
 compdef mosh=ssh
 compdef scp=ssh
 
-# load scripts completion
-_load-completion () { compadd -- nvm rvm }
-compdef _load-completion load
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Powerline
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
-# nvm
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# nvm & rvm
+source $DOTFILES/scripts/load
 
-# rvm
-# export RVM_DIR="$HOME/.rvm"
-# export PATH="$PATH:$RVM_DIR/bin"
-# [ -s "$NVM_DIR/scripts/rvm" ] && \. "$NVM_DIR/scripts/rvm"
 
 
 # aliases
