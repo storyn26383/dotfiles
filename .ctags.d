@@ -1,0 +1,3 @@
+--kinds-php=citf
+--exclude=*.json
+--exclude=*.min.*

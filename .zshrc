@@ -38,6 +38,7 @@ compdef scp=ssh
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -printf '%P\\n'"
 
 # Powerline
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
