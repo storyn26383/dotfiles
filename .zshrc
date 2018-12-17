@@ -38,7 +38,7 @@ compdef scp=ssh
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -printf '%P\\n'"
+export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore .git -l -g ''"
 
 # Powerline
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
@@ -46,15 +46,11 @@ source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
 # nvm & rvm
 source $DOTFILES/scripts/load
 
-
-
 # aliases
 alias ag="ag --ignore '*.lock'"
 alias ls="ls --color"
 alias y="ydict.js"
 alias v="vagrant"
-alias a="php artisan"
-alias s="php artisan serve --host=0.0.0.0"
 alias gta="git tag -a"
 alias gtl="git tag -l"
 alias gtd="git tag -d"
