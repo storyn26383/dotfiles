@@ -4,3 +4,5 @@
 [core]
 	excludesfile = /Users/Sasaya/.gitignore_global
 	ignorecase = false
+[mergetool]
+	keepBackup = false
