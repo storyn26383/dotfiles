@@ -1,18 +1,18 @@
 {
-	"segments": {
-		"right": [
-			{
-				"function": "powerline.segments.common.sys.uptime",
+  "segments": {
+    "right": [
+      {
+        "function": "powerline.segments.common.sys.uptime",
         "before": "⇑ ",
-				"priority": 50
-			},
-			{
-				"function": "powerline.segments.common.sys.system_load",
+        "priority": 50
+      },
+      {
+        "function": "powerline.segments.common.sys.system_load",
         "after": "",
-				"priority": 50
-			},
-			{
-				"function": "powerline.segments.common.bat.battery",
+        "priority": 50
+      },
+      {
+        "function": "powerline.segments.common.bat.battery",
         "before": "",
         "args": {
           "format": "{ac_state}{capacity:3.0%}",
@@ -20,24 +20,24 @@
           "online": "",
           "offline": ""
         }
-			},
-			{
-				"function": "powerline.segments.common.time.date"
-			},
-			{
-				"function": "powerline.segments.common.time.date",
-				"name": "time",
+      },
+      {
+        "function": "powerline.segments.common.time.date"
+      },
+      {
+        "function": "powerline.segments.common.time.date",
+        "name": "time",
         "before": "",
-				"args": {
-					"format": "%H:%M:%S",
-					"istime": true
-				}
-			},
-			{
-			  "type": "string",
-			  "contents": "ʕ•ᴥ•ʔ",
-			  "name": "hostname"
-			}
-		]
-	}
+        "args": {
+          "format": "%H:%M:%S",
+          "istime": true
+        }
+      },
+      {
+        "type": "string",
+        "contents": "ʕ•ᴥ•ʔ",
+        "name": "hostname"
+      }
+    ]
+  }
 }
