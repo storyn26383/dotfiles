@@ -9,7 +9,9 @@
 				"priority": 10
 			},
 			{
-				"function": "powerline.segments.common.env.user",
+			  "type": "string",
+			  "contents": "ʕ•ᴥ•ʔ",
+			  "name": "user",
 				"priority": 30
 			},
 			{

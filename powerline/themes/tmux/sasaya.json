@@ -34,8 +34,9 @@
 				}
 			},
 			{
-				"function": "powerline.segments.common.net.hostname",
-        "before": ""
+			  "type": "string",
+			  "contents": "ʕ•ᴥ•ʔ",
+			  "name": "hostname"
 			}
 		]
 	}
