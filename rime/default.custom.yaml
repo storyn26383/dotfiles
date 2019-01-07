@@ -4,7 +4,6 @@
 patch:
   schema_list:
     - schema: cangjie5
-    - schema: emoji
   menu/page_size: 9
   ascii_composer/good_old_caps_lock: false
   ascii_composer/switch_key/Shift_L: noop
