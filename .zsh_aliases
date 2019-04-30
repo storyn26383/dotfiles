@@ -1,0 +1,6 @@
+alias ag="ag --ignore '*.lock'"
+alias ls="ls --color"
+alias y="ydict.js"
+alias gta="git tag -a"
+alias gtl="git tag -l"
+alias gtd="git tag -d"

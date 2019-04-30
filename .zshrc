@@ -47,10 +47,4 @@ source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
 source $DOTFILES/scripts/load
 
 # aliases
-alias ag="ag --ignore '*.lock'"
-alias ls="ls --color"
-alias y="ydict.js"
-alias v="vagrant"
-alias gta="git tag -a"
-alias gtl="git tag -l"
-alias gtd="git tag -d"
+[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
