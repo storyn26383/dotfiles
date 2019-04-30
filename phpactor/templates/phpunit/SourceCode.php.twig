@@ -2,10 +2,10 @@
 
 namespace {{ prototype.namespace }};
 
-use App\Modules\Service\Service;
+use PHPUnit\Framework\TestCase;
 
 {% for class in prototype.classes %}
-class {{ class.name }} extends Service
+class {{ class.name }} extends TestCase
 {
     //
 }
