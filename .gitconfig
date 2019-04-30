@@ -6,3 +6,5 @@
 	ignorecase = false
 [mergetool]
 	keepBackup = false
+[diff]
+	tool = vimdiff
