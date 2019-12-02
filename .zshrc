@@ -10,7 +10,7 @@ plugins=(git base16-shell vi-mode)
 # User configuration
 export PATH="vendor/bin"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
-export PATH="$PATH:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin"
+export PATH="$PATH:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin"
 export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # Load on my zsh
