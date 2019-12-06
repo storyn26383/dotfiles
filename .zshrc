@@ -39,7 +39,7 @@ compdef scp=ssh
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore=*.lock --ignore=.git -l -g ''"
+export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore=.git -g ''"
 
 # Powerline
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
