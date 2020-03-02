@@ -10,8 +10,10 @@ plugins=(git base16-shell vi-mode)
 # User configuration
 export PATH="vendor/bin"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
-export PATH="$PATH:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin"
-export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
+export PATH="$PATH:/usr/local/opt/findutils/libexec/gnubin"
+export PATH="$PATH:/usr/local/opt/gnu-sed/libexec/gnubin"
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # Load on my zsh
 source $ZSH/oh-my-zsh.sh
@@ -46,6 +48,9 @@ source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
 
 # nvm & rvm
 source $DOTFILES/scripts/load
+
+# docker
+source $DOTFILES/scripts/docker
 
 # aliases
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
