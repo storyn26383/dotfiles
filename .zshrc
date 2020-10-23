@@ -8,8 +8,8 @@ export DOTFILES=$HOME/dotfiles
 plugins=(git base16-shell vi-mode)
 
 # User configuration
-export PATH="vendor/bin"
-export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH="$HOME/.composer/vendor/bin"
+export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
 export PATH="$PATH:/usr/local/opt/findutils/libexec/gnubin"
 export PATH="$PATH:/usr/local/opt/gnu-sed/libexec/gnubin"
