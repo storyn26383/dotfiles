@@ -1,5 +1,3 @@
 code_transform.class_new.variants:
   trait: trait
   phpunit: phpunit
-  service: service
-  model: model
