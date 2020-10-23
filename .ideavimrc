@@ -1,0 +1,71 @@
+" =================
+"  plugin
+" =================
+
+set surround
+
+" =================
+"  settings
+" =================
+
+set scrolloff=4
+set showmode
+
+set hlsearch
+set incsearch
+set ignorecase
+
+" =================
+"  key remap
+" =================
+
+" leader key
+let mapleader = ','
+let g:mapleader = ','
+
+" command mode
+cnoremap <C-A> <HOME>
+cnoremap <C-E> <END>
+cnoremap <C-B> <LEFT>
+cnoremap <C-D> <DEL>
+cnoremap <C-F> <RIGHT>
+cnoremap <C-H> <BS>
+cnoremap <C-N> <DOWN>
+cnoremap <C-P> <UP>
+cnoremap <ESC><C-B> <S-LEFT>
+cnoremap <ESC><C-F> <S-RIGHT>
+
+" fast save
+nmap <Leader>s :w<CR>
+
+" close tab
+nmap <Leader>w :action CloseContent<CR>
+
+" go to definition
+nmap g] <C-]>
+nmap g[ <C-T>
+
+" identation
+nmap g. v>
+nmap g, v<
+vmap g. >gv
+vmap g, <gv
+
+" move lines up and down using ctrl+[jk]
+nmap <C-J> mz:m+<CR>`z
+nmap <C-K> mz:m-2<CR>`z
+vmap <C-J> :m'>+<CR>`<my`>mzgv`yo`z
+vmap <C-K> :m'<-2<CR>`>my`<mzgv`yo`z
+
+" move to the prev or next tab using ctrl+[hl]
+nmap <C-H> :tabprevious<CR>
+nmap <C-L> :tabnext<CR>
+
+" cancel searched highlight
+nmap <Leader><Space> :nohlsearch<CR>
+
+" navigate
+nmap <C-P> :action GotoFile<CR>
+nmap <Leader>r :action FileStructurePopup<CR>
+nmap <Leader>t :action GotoSymbol<CR>
+nmap <Leader>kb :action ActivateProjectToolWindow<CR>
