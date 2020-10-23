@@ -49,8 +49,6 @@ source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
 # nvm & rvm & php
 source $DOTFILES/scripts/load
 
-# docker
-source $DOTFILES/scripts/docker
 
 # aliases
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
