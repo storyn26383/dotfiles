@@ -2,8 +2,12 @@
 # encoding: utf-8
 
 patch:
+  us_keyboard_layout: true
   style/font_point: 16
   # style/inline_preedit: false
   style/color_scheme: dark_temple
-  app_options/com.runningwithcrayons.Alfred-3:
-    ascii_mode: true
+  app_options:
+    com.googlecode.iterm2:
+      ascii_mode: false
+    # com.runningwithcrayons.Alfred:
+    #   ascii_mode: true
