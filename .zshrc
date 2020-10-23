@@ -46,7 +46,7 @@ export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore=.git -g ''"
 # Powerline
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
-# nvm & rvm
+# nvm & rvm & php
 source $DOTFILES/scripts/load
 
 # docker

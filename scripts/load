@@ -11,9 +11,15 @@ load-rvm () {
   [ -s "$RVM_DIR/scripts/rvm" ] && \. "$RVM_DIR/scripts/rvm"
 }
 
+load-php () {
+  echo 'Loading phpbrew...'
+  export PHPBREW_DIR="$HOME/.phpbrew"
+  [ -s "$PHPBREW_DIR/bashrc" ] && \. "$PHPBREW_DIR/bashrc"
+}
+
 load-usage () {
   echo 'Usage: load [SCRIPT...]'
-  echo 'Supported scripts: nvm, rvm'
+  echo 'Supported scripts: nvm, rvm, php'
 }
 
 load () {
@@ -26,6 +32,10 @@ load () {
 
         rvm)
           load-rvm
+          ;;
+
+        php)
+          load-php
           ;;
 
         help|-h|-help|--help)
@@ -44,14 +54,15 @@ load () {
     done
   else
     load-nvm
-    load-rvm
+    # load-rvm
+    load-php
   fi
 
   echo 'Done!'
 }
 
 load-completion () {
-  compadd -- nvm rvm
+  compadd -- nvm rvm php
 }
 
 compdef load-completion load
