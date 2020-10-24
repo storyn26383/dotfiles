@@ -41,7 +41,7 @@ compdef scp=ssh
 export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore=.git -g ''"
 
 # Powerline
-source /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
+source /usr/local/lib/python3.8/dist-packages/powerline/bindings/zsh/powerline.zsh
 
 # nvm & rvm & php
 source $DOTFILES/scripts/load
