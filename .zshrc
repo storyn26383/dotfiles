@@ -9,7 +9,7 @@ plugins=(git base16-shell vi-mode)
 
 # User configuration
 export PATH="$HOME/.config/composer/vendor/bin"
-export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
+export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.local/bin"
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # Load on my zsh
