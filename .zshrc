@@ -43,8 +43,9 @@ export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore=.git -g ''"
 # Powerline
 source /usr/local/lib/python3.8/dist-packages/powerline/bindings/zsh/powerline.zsh
 
-# nvm & rvm & php
+# scripts
 source $DOTFILES/scripts/load
+source $DOTFILES/scripts/k
 
 # aliases
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases

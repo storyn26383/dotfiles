@@ -1,0 +1,43 @@
+_k_pods () {
+  kubectl get pods | grep Running | awk '{ print $1 }' | sed -e 's/-deploy.*$//'
+}
+
+_k_sh () {
+  kubectl exec -it `kubectl get pod | grep Running | grep $1 | awk '{ print $1 }'` -- sh
+}
+
+_k_usage () {
+  echo 'Usage: k <command>'
+  echo 'k pods        list running pods'
+  echo 'k sh <pod>    enter pod'
+}
+
+k () {
+  case $1 in
+    pods)
+      _k_pods
+      ;;
+
+    sh)
+      _k_sh $2
+      ;;
+
+    help|-h|-help|--help)
+      k-usage
+      ;;
+
+    *)
+      echo 'Unknow command:' $1
+      _k_usage
+      ;;
+  esac
+}
+
+_k_completion () {
+  case "${words[2]}" in
+    sh) compadd -- $(_k_pods);;
+    *) compadd -- pods sh;;
+  esac
+}
+
+compdef _k_completion k
