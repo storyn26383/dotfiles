@@ -1,23 +1,23 @@
-load-nvm () {
+_load_nvm () {
   echo 'Loading nvm...'
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 }
 
-load-rvm () {
+_load_rvm () {
   echo 'Loading rvm...'
   export RVM_DIR="$HOME/.rvm"
   export PATH="$PATH:$RVM_DIR/bin"
   [ -s "$RVM_DIR/scripts/rvm" ] && \. "$RVM_DIR/scripts/rvm"
 }
 
-load-php () {
+_load_php () {
   echo 'Loading phpbrew...'
   export PHPBREW_DIR="$HOME/.phpbrew"
   [ -s "$PHPBREW_DIR/bashrc" ] && \. "$PHPBREW_DIR/bashrc"
 }
 
-load-usage () {
+_load_usage () {
   echo 'Usage: load [SCRIPT...]'
   echo 'Supported scripts: nvm, rvm, php'
 }
@@ -27,25 +27,25 @@ load () {
     while [ $# != 0 ]; do
       case $1 in
         nvm)
-          load-nvm
+          _load_nvm
           ;;
 
         rvm)
-          load-rvm
+          _load_rvm
           ;;
 
         php)
-          load-php
+          _load_php
           ;;
 
         help|-h|-help|--help)
-          load-usage
+          _load_usage
           return
           ;;
 
         *)
           echo 'Unknow script:' $1
-          load-usage
+          _load_usage
           return
           ;;
       esac
@@ -53,16 +53,16 @@ load () {
       shift
     done
   else
-    load-nvm
-    # load-rvm
-    load-php
+    _load_nvm
+    # _load_rvm
+    _load_php
   fi
 
   echo 'Done!'
 }
 
-load-completion () {
+_load_completion () {
   compadd -- nvm rvm php
 }
 
-compdef load-completion load
+compdef _load_completion load
