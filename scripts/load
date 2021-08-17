@@ -17,6 +17,12 @@ _load_php () {
   [ -s "$PHPBREW_DIR/bashrc" ] && \. "$PHPBREW_DIR/bashrc"
 }
 
+_load_cargo () {
+  echo 'Loading cargo...'
+  export CARGO_DIR="$HOME/.cargo"
+  [ -s "$CARGO_DIR/env" ] && \. "$CARGO_DIR/env"
+}
+
 _load_usage () {
   echo 'Usage: load [SCRIPT...]'
   echo 'Supported scripts: nvm, rvm, php'
@@ -38,6 +44,10 @@ load () {
           _load_php
           ;;
 
+        cargo)
+          _load_cargo
+          ;;
+
         help|-h|-help|--help)
           _load_usage
           return
@@ -54,7 +64,6 @@ load () {
     done
   else
     _load_nvm
-    # _load_rvm
     _load_php
   fi
 
@@ -62,7 +71,7 @@ load () {
 }
 
 _load_completion () {
-  compadd -- nvm rvm php
+  compadd -- nvm rvm php cargo
 }
 
 compdef _load_completion load
