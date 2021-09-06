@@ -16,12 +16,17 @@ _k_port_forward () {
   kubectl port-forward `kubectl get pods | grep Running | grep $pod | awk '{ print $1 }'` $@
 }
 
+_k_create_database () {
+  kubectl exec `kubectl get pods | grep mysql | grep Running  | awk '{ print $1 }'` -- bash -c "mysql -u \$MYSQL_USER -p\$MYSQL_PASSWORD <<< 'CREATE DATABASE \`$1\`;'"
+}
+
 _k_usage () {
   echo 'Usage: k <command>'
   echo 'k pods                                           list running pods'
   echo 'k sh <pod>                                       enter pod'
   echo 'k logs <pod>                                     show pod logs'
   echo 'k port-forward <pod> [local_port:]remote_port    forward port to pod'
+  echo 'k create-database <dbname>                       create a new database'
 }
 
 k () {
@@ -41,6 +46,10 @@ k () {
     port-forward)
       shift
       _k_port_forward $@
+      ;;
+
+    create-database)
+      _k_create_database $2
       ;;
 
     help|-h|-help|--help)
@@ -66,7 +75,7 @@ _k_completion () {
         ;;
     esac
   else
-    _k_generate_completion "pods sh logs port-forward"
+    _k_generate_completion "pods sh logs port-forward create-database"
   fi
 }
 
