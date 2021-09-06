@@ -6,6 +6,10 @@ _k_sh () {
   kubectl exec -it `kubectl get pods | grep Running | grep $1 | awk '{ print $1 }'` -- sh
 }
 
+_k_logs () {
+  kubectl logs `kubectl get pods | grep Running | grep $1 | awk '{ print $1 }'`
+}
+
 _k_port_forward () {
   pod=$1
   shift
@@ -16,6 +20,7 @@ _k_usage () {
   echo 'Usage: k <command>'
   echo 'k pods                                           list running pods'
   echo 'k sh <pod>                                       enter pod'
+  echo 'k logs <pod>                                     show pod logs'
   echo 'k port-forward <pod> [local_port:]remote_port    forward port to pod'
 }
 
@@ -27,6 +32,10 @@ k () {
 
     sh)
       _k_sh $2
+      ;;
+
+    logs)
+      _k_logs $2
       ;;
 
     port-forward)
