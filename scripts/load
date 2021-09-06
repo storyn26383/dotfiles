@@ -2,6 +2,7 @@ _load_nvm () {
   echo 'Loading nvm...'
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
 
 _load_rvm () {
@@ -70,8 +71,12 @@ load () {
   echo 'Done!'
 }
 
-_load_completion () {
-  compadd -- nvm rvm php cargo
+_load_generate_completion() {
+  COMPREPLY=($(compgen -W "$1" -- "${COMP_WORDS[COMP_CWORD]}"))
 }
 
-compdef _load_completion load
+_load_completion () {
+  _load_generate_completion "nvm rvm php cargo"
+}
+
+complete -F _load_completion load
