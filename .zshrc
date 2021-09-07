@@ -28,14 +28,6 @@ export EDITOR=vim
 export HISTSIZE=2000
 export SAVEHIST=2000
 
-# ssh hostname completion
-[ -r ~/.ssh/config ] && hosts=($(cat ~/.ssh/config | sed -ne 's/Host[=\t ]//p')) || hosts=()
-zstyle ':completion:*:hosts' hosts $hosts
-zstyle ':completion:*' users off
-compdef csshX=ssh
-compdef mosh=ssh
-compdef scp=ssh
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore=.git -g ''"
@@ -44,6 +36,7 @@ export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore=.git -g ''"
 source /usr/local/lib/python3.8/dist-packages/powerline/bindings/zsh/powerline.zsh
 
 # scripts
+source $DOTFILES/scripts/ssh
 source $DOTFILES/scripts/load
 source $DOTFILES/scripts/k
 
