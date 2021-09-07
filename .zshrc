@@ -47,5 +47,8 @@ source /usr/local/lib/python3.8/dist-packages/powerline/bindings/zsh/powerline.z
 source $DOTFILES/scripts/load
 source $DOTFILES/scripts/k
 
+# keys
+[ -f ~/.keys ] && source ~/.keys
+
 # aliases
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases

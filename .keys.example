@@ -1,0 +1,6 @@
+# drone
+export DRONE_SERVER=
+export DRONE_TOKEN=
+
+# GitHub
+export GITHUB_TOKEN=
