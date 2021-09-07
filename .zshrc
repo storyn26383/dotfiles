@@ -38,6 +38,7 @@ source /usr/local/lib/python3.8/dist-packages/powerline/bindings/zsh/powerline.z
 # scripts
 source $DOTFILES/scripts/shared
 source $DOTFILES/scripts/ssh
+source $DOTFILES/scripts/forge
 source $DOTFILES/scripts/load
 source $DOTFILES/scripts/k
 
