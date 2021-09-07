@@ -63,19 +63,26 @@ k () {
   esac
 }
 
-_k_generate_completion() {
+_k_generate_completion () {
   COMPREPLY=($(compgen -W "$1" -- "${COMP_WORDS[COMP_CWORD]}"))
+}
+
+_k_pods_completion () {
+  _k_generate_completion "$(_k_pods)"
+}
+
+_k_commands_completion () {
+  _k_generate_completion "pods sh logs port-forward create-database"
 }
 
 _k_completion () {
   if [ ${#COMP_WORDS[@]} -gt 1 ]; then
     case "${COMP_WORDS[1]}" in
-      sh|logs|port-forward)
-        _k_generate_completion "$(_k_pods)"
-        ;;
+      sh|logs|port-forward) _k_pods_completion;;
+      *) _k_commands_completion;;
     esac
   else
-    _k_generate_completion "pods sh logs port-forward create-database"
+    _k_commands_completion
   fi
 }
 
