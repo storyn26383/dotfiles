@@ -71,12 +71,8 @@ load () {
   echo 'Done!'
 }
 
-_load_generate_completion() {
-  COMPREPLY=($(compgen -W "$1" -- "${COMP_WORDS[COMP_CWORD]}"))
-}
-
 _load_completion () {
-  _load_generate_completion "nvm rvm php cargo"
+  _shared_generate_completion "nvm rvm php cargo"
 }
 
 complete -F _load_completion load

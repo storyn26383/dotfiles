@@ -63,16 +63,12 @@ k () {
   esac
 }
 
-_k_generate_completion () {
-  COMPREPLY=($(compgen -W "$1" -- "${COMP_WORDS[COMP_CWORD]}"))
-}
-
 _k_pods_completion () {
-  _k_generate_completion "$(_k_pods)"
+  _shared_generate_completion "$(_k_pods)"
 }
 
 _k_commands_completion () {
-  _k_generate_completion "pods sh logs port-forward create-database"
+  _shared_generate_completion "pods sh logs port-forward create-database"
 }
 
 _k_completion () {
