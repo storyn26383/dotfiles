@@ -9,6 +9,7 @@ plugins=(git base16-shell vi-mode)
 
 # User configuration
 export PATH="$HOME/.config/composer/vendor/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.local/bin"
 export PATH="$PATH:/snap/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
@@ -31,6 +32,10 @@ export SAVEHIST=2000
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore=.git -g ''"
+
+# navi
+[ -x "$(command -v navi)" ] && eval "$(navi widget zsh)"
+export NAVI_FZF_OVERRIDES="--height ${FZF_TMUX_HEIGHT:-40%}"
 
 # Powerline
 source /usr/local/lib/python3.8/dist-packages/powerline/bindings/zsh/powerline.zsh

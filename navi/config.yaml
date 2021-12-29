@@ -1,0 +1,5 @@
+finder:
+  command: fzf
+
+shell:
+  command: zsh
