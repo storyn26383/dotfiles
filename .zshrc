@@ -46,6 +46,7 @@ source $DOTFILES/scripts/ssh
 source $DOTFILES/scripts/forge
 source $DOTFILES/scripts/load
 source $DOTFILES/scripts/k
+source $DOTFILES/scripts/multipass
 
 # keys
 [ -f ~/.keys ] && source ~/.keys
