@@ -9,5 +9,5 @@ patch:
   app_options:
     com.googlecode.iterm2:
       ascii_mode: false
-    # com.runningwithcrayons.Alfred:
-    #   ascii_mode: true
+    com.runningwithcrayons.Alfred:
+      ascii_mode: true

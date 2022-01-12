@@ -2,6 +2,10 @@
 # encoding: utf-8
 
 patch:
+  reverse_lookup/dictionary: jyut6ping3
+  reverse_lookup/prism: jyut6ping3
+  reverse_lookup/tips: 〔粵拼〕
+  reverse_lookup/preedit_format: []
   abc_segmentor/extra_tags: {}
   translator/enable_encoder: false
   translator/enable_sentence: false
