@@ -8,3 +8,5 @@
 	keepBackup = false
 [diff]
 	tool = vimdiff
+[merge]
+	tool = vimdiff
