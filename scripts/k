@@ -1,3 +1,7 @@
+_k_use () {
+  kubectl config use-context $1
+}
+
 _k_pods () {
   kubectl get pods | grep Running | awk '{ print $1 }' | sed -e 's/-deploy.*$//'
 }
@@ -22,6 +26,7 @@ _k_create_database () {
 
 _k_usage () {
   echo 'Usage: k <command>'
+  echo 'k use <context>                                  set current context'
   echo 'k pods                                           list running pods'
   echo 'k sh <pod>                                       enter pod'
   echo 'k logs <pod>                                     show pod logs'
@@ -31,6 +36,10 @@ _k_usage () {
 
 k () {
   case $1 in
+    use)
+      _k_use $2
+      ;;
+
     pods)
       _k_pods
       ;;
@@ -63,17 +72,22 @@ k () {
   esac
 }
 
+_k_contexts_completion () {
+  _shared_generate_completion "$(kubectl config get-contexts | grep -v NAME | sed 's/\*/ /' | awk '{ print $1 }')"
+}
+
 _k_pods_completion () {
   _shared_generate_completion "$(_k_pods)"
 }
 
 _k_commands_completion () {
-  _shared_generate_completion "pods sh logs port-forward create-database"
+  _shared_generate_completion "use pods sh logs port-forward create-database"
 }
 
 _k_completion () {
   if [ ${#COMP_WORDS[@]} -gt 1 ]; then
     case "${COMP_WORDS[1]}" in
+      use) _k_contexts_completion;;
       sh|logs|port-forward) _k_pods_completion;;
       *) _k_commands_completion;;
     esac
