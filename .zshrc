@@ -39,7 +39,7 @@ export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore=.git -g ''"
 export NAVI_FZF_OVERRIDES="--height ${FZF_TMUX_HEIGHT:-40%}"
 
 # Powerline
-source /opt/homebrew/lib/python3.9/site-packages/powerline/bindings/zsh/powerline.zsh
+source /opt/homebrew/lib/python3.11/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # scripts
 source $DOTFILES/scripts/shared
