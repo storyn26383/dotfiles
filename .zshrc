@@ -9,8 +9,8 @@ plugins=(git base16-shell vi-mode)
 
 # User configuration
 export PATH="$HOME/.composer/vendor/bin"
+export PATH="$PATH:/opt/homebrew/opt/coreutils/libexec/gnubin"
 export PATH="$PATH:/opt/homebrew/opt/gnu-sed/libexec/gnubin"
-export PATH="$PATH:/opt/homebrew/opt/node@16/bin"
 export PATH="$PATH:/opt/homebrew/bin"
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
