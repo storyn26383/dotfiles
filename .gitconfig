@@ -1,12 +1,12 @@
 [user]
-	name = Sasaya
-	email = storyn26383@gmail.com
+  name = Sasaya
+  email = storyn26383@gmail.com
 [core]
-	excludesfile = /Users/Sasaya/.gitignore_global
-	ignorecase = false
+  excludesfile = /Users/Sasaya/.gitignore_global
+  ignorecase = false
 [mergetool]
-	keepBackup = false
+  keepBackup = false
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [merge]
-	tool = vimdiff
+  tool = vimdiff
