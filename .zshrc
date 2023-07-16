@@ -5,7 +5,7 @@ export DOTFILES=$HOME/dotfiles
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git base16-shell vi-mode)
+plugins=(base16-shell vi-mode git gh)
 
 # User configuration
 export PATH="$HOME/.composer/vendor/bin"
