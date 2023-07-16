@@ -1,4 +1,5 @@
 export ZSH=$HOME/.oh-my-zsh
+export BREW=/opt/homebrew
 export DOTFILES=$HOME/dotfiles
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -9,9 +10,12 @@ plugins=(base16-shell vi-mode git gh)
 
 # User configuration
 export PATH="$HOME/.composer/vendor/bin"
-export PATH="$PATH:/opt/homebrew/opt/coreutils/libexec/gnubin"
-export PATH="$PATH:/opt/homebrew/opt/gnu-sed/libexec/gnubin"
-export PATH="$PATH:/opt/homebrew/bin"
+export PATH="$PATH:$BREW/opt/coreutils/libexec/gnubin"
+export PATH="$PATH:$BREW/opt/findutils/libexec/gnubin"
+export PATH="$PATH:$BREW/opt/gnu-sed/libexec/gnubin"
+export PATH="$PATH:$BREW/opt/gnu-tar/libexec/gnubin"
+export PATH="$PATH:$BREW/opt/curl/bin"
+export PATH="$PATH:$BREW/bin:$BREW/sbin"
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # Load on my zsh
