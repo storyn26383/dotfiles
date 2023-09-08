@@ -5,8 +5,11 @@ env:
 
 window:
   startup_mode: Maximized
-  decorations: full
+  decorations: transparent
   dynamic_title: false
+  padding:
+    x: 2
+    y: 2
 
 font:
   normal:
