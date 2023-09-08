@@ -9,14 +9,10 @@ export DOTFILES=$HOME/dotfiles
 plugins=(base16-shell vi-mode git gh)
 
 # User configuration
-export PATH="$HOME/.composer/vendor/bin"
-export PATH="$PATH:$BREW/opt/coreutils/libexec/gnubin"
-export PATH="$PATH:$BREW/opt/findutils/libexec/gnubin"
-export PATH="$PATH:$BREW/opt/gnu-sed/libexec/gnubin"
-export PATH="$PATH:$BREW/opt/gnu-tar/libexec/gnubin"
-export PATH="$PATH:$BREW/opt/curl/bin"
-export PATH="$PATH:$BREW/bin:$BREW/sbin"
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.config/composer/vendor/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.local/bin"
+export PATH="$PATH:/snap/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # Load on my zsh
 source $ZSH/oh-my-zsh.sh
@@ -43,7 +39,7 @@ export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore=.git -g ''"
 export NAVI_FZF_OVERRIDES="--height ${FZF_TMUX_HEIGHT:-40%}"
 
 # Powerline
-source /opt/homebrew/lib/python3.11/site-packages/powerline/bindings/zsh/powerline.zsh
+source /usr/local/lib/python3.8/dist-packages/powerline/bindings/zsh/powerline.zsh
 
 # scripts
 source $DOTFILES/scripts/shared
