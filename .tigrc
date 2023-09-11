@@ -17,3 +17,4 @@ bind refs 0 ?git pull
 
 bind status S ?git stash --patch
 
+bind tree C ?git checkout %(commit) %(file)
