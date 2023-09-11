@@ -21,3 +21,9 @@ font:
   glyph_offset:
     y: 2
   builtin_box_drawing: true
+
+shell:
+  program: /bin/zsh
+  args:
+    - -lic
+    - 'tmux new -ADs Sasaya'
