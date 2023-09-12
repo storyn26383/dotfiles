@@ -48,10 +48,6 @@ source /opt/homebrew/lib/python3.11/site-packages/powerline/bindings/zsh/powerli
 # scripts
 source $DOTFILES/scripts/shared
 source $DOTFILES/scripts/ssh
-source $DOTFILES/scripts/forge
-source $DOTFILES/scripts/load
-source $DOTFILES/scripts/k
-source $DOTFILES/scripts/multipass
 
 # keys
 [ -f ~/.keys ] && source ~/.keys
