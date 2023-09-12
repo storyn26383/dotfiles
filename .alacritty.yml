@@ -22,6 +22,9 @@ font:
     y: 2
   builtin_box_drawing: true
 
+scrolling:
+  multiplier: 0
+
 shell:
   program: /bin/zsh
   args:
