@@ -5,3 +5,4 @@ tags.vendor
 .tags
 .tags_sorted_by_file
 .php_cs.cache
+.vimrc
