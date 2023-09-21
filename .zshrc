@@ -10,6 +10,8 @@ plugins=(base16-shell vi-mode git gh)
 
 # User configuration
 export PATH="$HOME/.composer/vendor/bin"
+export PATH="$PATH:$HOME/.bun/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$BREW/opt/coreutils/libexec/gnubin"
 export PATH="$PATH:$BREW/opt/findutils/libexec/gnubin"
 export PATH="$PATH:$BREW/opt/gnu-sed/libexec/gnubin"
@@ -28,35 +30,24 @@ export LC_COLLATE=C
 export LC_CTYPE=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR=vim
+export EDITOR=nvim
 
 # history file
 export HISTSIZE=2000
 export SAVEHIST=2000
 
-# fix key bindings
-bindkey '^B' backward-char
-bindkey '^F' forward-char
-bindkey '^N' down-line-or-history
-bindkey '^P' up-line-or-history
+# env
+[ -f ~/.env ] && source ~/.env
 
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore=.git -g ''"
-
-# navi
-[ -x "$(command -v navi)" ] && eval "$(navi widget zsh)"
-export NAVI_FZF_OVERRIDES="--height ${FZF_TMUX_HEIGHT:-40%}"
-
-# Powerline
-source /opt/homebrew/lib/python3.11/site-packages/powerline/bindings/zsh/powerline.zsh
-
-# scripts
-source $DOTFILES/scripts/shared
-source $DOTFILES/scripts/ssh
-
-# keys
-[ -f ~/.keys ] && source ~/.keys
-
-# aliases
-[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
+# config
+source $DOTFILES/zsh/config/key-bindings.zsh
+source $DOTFILES/zsh/config/aliases.zsh
+source $DOTFILES/zsh/config/powerline.zsh
+source $DOTFILES/zsh/config/scripts.zsh
+source $DOTFILES/zsh/config/ssh.zsh
+source $DOTFILES/zsh/config/fzf.zsh
+source $DOTFILES/zsh/config/navi.zsh
+source $DOTFILES/zsh/config/bun.zsh
+source $DOTFILES/zsh/config/rustup.zsh
+source $DOTFILES/zsh/config/one-password.zsh
+source $DOTFILES/zsh/config/gcloud.zsh
