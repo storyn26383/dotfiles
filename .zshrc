@@ -34,6 +34,12 @@ export EDITOR=vim
 export HISTSIZE=2000
 export SAVEHIST=2000
 
+# fix key bindings
+bindkey '^B' backward-char
+bindkey '^F' forward-char
+bindkey '^N' down-line-or-history
+bindkey '^P' up-line-or-history
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="ag --hidden --skip-vcs-ignores --ignore=.git -g ''"

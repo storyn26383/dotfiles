@@ -30,3 +30,8 @@ shell:
   args:
     - -lic
     - 'tmux new -ADs Sasaya'
+
+key_bindings:
+  - { key: Key0,   mods: Command, action: ResetFontSize    }
+  - { key: Equals, mods: Command, action: IncreaseFontSize }
+  - { key: Minus,  mods: Command, action: DecreaseFontSize }
