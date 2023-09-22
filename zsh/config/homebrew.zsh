@@ -1,0 +1,6 @@
+export PATH="$BREW/bin:$BREW/sbin:$PATH"
+export PATH="$BREW/opt/curl/bin:$PATH"
+export PATH="$BREW/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="$BREW/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="$BREW/opt/findutils/libexec/gnubin:$PATH"
+export PATH="$BREW/opt/coreutils/libexec/gnubin:$PATH"

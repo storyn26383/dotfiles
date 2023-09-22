@@ -6,19 +6,10 @@ export DOTFILES=$HOME/dotfiles
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(base16-shell vi-mode git gh)
+plugins=(base16-shell vi-mode)
 
 # User configuration
-export PATH="$HOME/.composer/vendor/bin"
-export PATH="$PATH:$HOME/.bun/bin"
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$BREW/opt/coreutils/libexec/gnubin"
-export PATH="$PATH:$BREW/opt/findutils/libexec/gnubin"
-export PATH="$PATH:$BREW/opt/gnu-sed/libexec/gnubin"
-export PATH="$PATH:$BREW/opt/gnu-tar/libexec/gnubin"
-export PATH="$PATH:$BREW/opt/curl/bin"
-export PATH="$PATH:$BREW/bin:$BREW/sbin"
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # Load on my zsh
 source $ZSH/oh-my-zsh.sh
@@ -42,12 +33,9 @@ export SAVEHIST=2000
 # config
 source $DOTFILES/zsh/config/key-bindings.zsh
 source $DOTFILES/zsh/config/aliases.zsh
+source $DOTFILES/zsh/config/homebrew.zsh
 source $DOTFILES/zsh/config/powerline.zsh
 source $DOTFILES/zsh/config/scripts.zsh
 source $DOTFILES/zsh/config/ssh.zsh
 source $DOTFILES/zsh/config/fzf.zsh
-source $DOTFILES/zsh/config/navi.zsh
-source $DOTFILES/zsh/config/bun.zsh
-source $DOTFILES/zsh/config/rustup.zsh
-source $DOTFILES/zsh/config/one-password.zsh
-source $DOTFILES/zsh/config/gcloud.zsh
+source $DOTFILES/zsh/config/php.zsh

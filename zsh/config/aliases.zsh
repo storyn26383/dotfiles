@@ -1,6 +1,8 @@
 alias ag="ag --ignore '*.lock'"
 alias ls="ls --color"
 alias y="ydict.php"
+alias gaa="git add ."
+alias gc="git commit"
 alias gta="git tag -a"
 alias gtl="git tag -l"
 alias gtd="git tag -d"

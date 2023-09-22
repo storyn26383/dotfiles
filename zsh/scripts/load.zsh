@@ -1,52 +1,60 @@
 _load_nvm () {
   echo 'Loading nvm...'
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  source $DOTFILES/zsh/config/nvm.zsh
 }
 
-_load_rvm () {
-  echo 'Loading rvm...'
-  export RVM_DIR="$HOME/.rvm"
-  export PATH="$PATH:$RVM_DIR/bin"
-  [ -s "$RVM_DIR/scripts/rvm" ] && \. "$RVM_DIR/scripts/rvm"
+_load_bun () {
+  echo 'Loading bun...'
+  source $DOTFILES/zsh/config/bun.zsh
 }
 
-_load_php () {
-  echo 'Loading phpbrew...'
-  export PHPBREW_DIR="$HOME/.phpbrew"
-  [ -s "$PHPBREW_DIR/bashrc" ] && \. "$PHPBREW_DIR/bashrc"
+_load_rust () {
+  echo 'Loading rust...'
+  source $DOTFILES/zsh/config/rust.zsh
 }
 
-_load_cargo () {
-  echo 'Loading cargo...'
-  export CARGO_DIR="$HOME/.cargo"
-  [ -s "$CARGO_DIR/env" ] && \. "$CARGO_DIR/env"
+_load_op () {
+  echo 'Loading 1password...'
+  source $DOTFILES/zsh/config/1password.zsh
+}
+
+_load_gcloud () {
+  echo 'Loading gcloud...'
+  source $DOTFILES/zsh/config/gcloud.zsh
+}
+
+_load_navi () {
+  echo 'Loading navi...'
+  source $DOTFILES/zsh/config/navi.zsh
 }
 
 _load_usage () {
   echo 'Usage: load [SCRIPT...]'
-  echo 'Supported scripts: nvm, rvm, php'
+  echo 'Supported scripts: bun, rust, op, gcloud, navi'
 }
 
 load () {
   if [ $# -ne 0 ]; then
     while [ $# != 0 ]; do
       case $1 in
-        nvm)
-          _load_nvm
+        bun)
+          _load_bun
           ;;
 
-        rvm)
-          _load_rvm
+        rust)
+          _load_rust
           ;;
 
-        php)
-          _load_php
+        op)
+          _load_op
           ;;
 
-        cargo)
-          _load_cargo
+        gcloud)
+          _load_gcloud
+          ;;
+
+        navi)
+          _load_navi
           ;;
 
         help|-h|-help|--help)
@@ -64,15 +72,18 @@ load () {
       shift
     done
   else
-    _load_nvm
-    _load_php
+    _load_bun
+    _load_rust
+    _load_op
+    _load_gcloud
+    _load_navi
   fi
 
   echo 'Done!'
 }
 
 _load_completion () {
-  _shared_generate_completion "nvm rvm php cargo"
+  _shared_generate_completion 'bun rust op gcloud navi'
 }
 
 complete -F _load_completion load
