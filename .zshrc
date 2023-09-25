@@ -11,6 +11,12 @@ plugins=(base16-shell vi-mode)
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
+# Homebrew
+source $DOTFILES/zsh/config/homebrew.zsh
+
+# Theme
+source $DOTFILES/zsh/config/theme.zsh
+
 # Load on my zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -33,7 +39,6 @@ export SAVEHIST=2000
 # config
 source $DOTFILES/zsh/config/key-bindings.zsh
 source $DOTFILES/zsh/config/aliases.zsh
-source $DOTFILES/zsh/config/homebrew.zsh
 source $DOTFILES/zsh/config/powerline.zsh
 source $DOTFILES/zsh/config/scripts.zsh
 source $DOTFILES/zsh/config/ssh.zsh
