@@ -43,4 +43,5 @@ source $DOTFILES/zsh/config/powerline.zsh
 source $DOTFILES/zsh/config/scripts.zsh
 source $DOTFILES/zsh/config/ssh.zsh
 source $DOTFILES/zsh/config/fzf.zsh
+source $DOTFILES/zsh/config/bat.zsh
 source $DOTFILES/zsh/config/php.zsh
