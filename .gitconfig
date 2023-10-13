@@ -10,3 +10,7 @@
   tool = vimdiff
 [merge]
   tool = vimdiff
+[difftool "vimdiff"]
+  path = nvim
+[mergetool "vimdiff"]
+  cmd = "nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'"
