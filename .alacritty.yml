@@ -15,7 +15,7 @@ font:
   normal:
     family: SauceCodePro Nerd Font
     style: Regular
-  size: 15
+  size: 16
   offset:
     y: 4
   glyph_offset:
