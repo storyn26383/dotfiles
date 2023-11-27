@@ -1,1 +1,1 @@
-export BAT_THEME=base16-256
+export BAT_THEME=tomorrow-night
