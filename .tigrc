@@ -10,7 +10,8 @@ bind main S ?git stash
 bind main P ?git cherry-pick %(commit)
 bind main C ?git checkout %(commit)
 
-bind refs 4 ?git rebase %(branch)
+bind refs 4 ?git rebase %(refname)
+bind refs M ?git merge %(refname)
 bind refs S ?git stash
 bind refs P ?git push origin %(branch) --tags
 bind refs 0 ?git pull
