@@ -9,12 +9,6 @@
         "priority": 10
       },
       {
-        "type": "string",
-        "contents": "ʕ•ᴥ•ʔ",
-        "name": "user",
-        "priority": 30
-      },
-      {
         "function": "powerline.segments.common.env.virtualenv",
         "priority": 50
       },

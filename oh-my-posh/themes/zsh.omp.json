@@ -72,7 +72,7 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b0",
           "type": "session",
-          "template": " ʕ•ᴥ•ʔ "
+          "template": " {{ .UserName }}@{{ .HostName }} "
         },
         {
           "background": "p:gray4",

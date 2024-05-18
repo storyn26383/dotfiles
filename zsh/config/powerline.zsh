@@ -1,4 +1,4 @@
-export POWERLINE_PATH=/opt/homebrew/lib/python3.11/site-packages/powerline/bindings
+export POWERLINE_PATH=/usr/local/lib/python3.12/dist-packages/powerline
 export POWERLINE_CONFIG_PATHS=$POWERLINE_PATH/config_files
 
 _powerline_command=$POWERLINE_COMMAND
