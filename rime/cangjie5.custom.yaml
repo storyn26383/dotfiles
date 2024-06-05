@@ -2,11 +2,14 @@
 # encoding: utf-8
 
 patch:
+  schema/dependencies/+: jyut6ping3
+  switches/@3/reset: 1
+  switches/@4/reset: 0
   reverse_lookup/dictionary: jyut6ping3
   reverse_lookup/prism: jyut6ping3
   reverse_lookup/tips: 〔粵拼〕
   reverse_lookup/preedit_format: []
-  abc_segmentor/extra_tags: {}
+  abc_segmentor/extra_tags: []
   translator/enable_encoder: false
   translator/enable_sentence: false
   translator/enable_user_dict: false

@@ -4,10 +4,11 @@
 patch:
   us_keyboard_layout: true
   style/font_point: 16
-  # style/inline_preedit: false
   style/color_scheme: dark_temple
   app_options:
     com.googlecode.iterm2:
-      ascii_mode: false
-    com.runningwithcrayons.Alfred:
+      ascii_mode: true
+    org.alacritty:
+      ascii_mode: true
+    com.raycast.macos:
       ascii_mode: true
