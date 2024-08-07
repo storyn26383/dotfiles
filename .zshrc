@@ -45,3 +45,4 @@ source $DOTFILES/zsh/config/ssh.zsh
 source $DOTFILES/zsh/config/fzf.zsh
 source $DOTFILES/zsh/config/bat.zsh
 source $DOTFILES/zsh/config/php.zsh
+source $DOTFILES/zsh/config/go.zsh
