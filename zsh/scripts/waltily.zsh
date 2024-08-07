@@ -53,17 +53,17 @@ waltily () {
           ;;
 
         shell)
-          docker run --rm -it -v `pwd`:/app -v ~/.composer:/.composer --link mysql -w /app -u `id -u`:`id -g` waltily.laravel bash
+          docker run --rm -it -v `pwd`:/app -v ~/.composer:/.composer -v ~/.config/psysh:/.config/psysh --link mysql -w /app -u `id -u`:`id -g` waltily.laravel bash
           ;;
 
         artisan)
           shift
           shift
-          docker run --rm -it -v `pwd`:/app -v ~/.composer:/.composer --link mysql -w /app -u `id -u`:`id -g` -p 8000:8000 waltily.laravel php artisan $@
+          docker run --rm -it -v `pwd`:/app -v ~/.composer:/.composer -v ~/.config/psysh:/.config/psysh --link mysql -w /app -u `id -u`:`id -g` -p 8000:8000 waltily.laravel php artisan $@
           ;;
 
         serve)
-          docker run --rm -it -v `pwd`:/app -v ~/.composer:/.composer --link mysql -w /app -u `id -u`:`id -g` -p 8000:8000 waltily.laravel php artisan serve --host 0.0.0.0
+          docker run --rm -it -v `pwd`:/app -v ~/.composer:/.composer -v ~/.config/psysh:/.config/psysh --link mysql -w /app -u `id -u`:`id -g` -p 8000:8000 waltily.laravel php artisan serve --host 0.0.0.0
           ;;
 
         *)
