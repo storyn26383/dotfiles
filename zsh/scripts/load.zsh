@@ -8,11 +8,6 @@ _load_bun () {
   source $DOTFILES/zsh/config/bun.zsh
 }
 
-_load_rust () {
-  echo 'Loading rust...'
-  source $DOTFILES/zsh/config/rust.zsh
-}
-
 _load_op () {
   echo 'Loading 1password...'
   source $DOTFILES/zsh/config/1password.zsh
@@ -30,7 +25,7 @@ _load_navi () {
 
 _load_usage () {
   echo 'Usage: load [SCRIPT...]'
-  echo 'Supported scripts: bun, rust, op, gcloud, navi'
+  echo 'Supported scripts: bun, op, gcloud, navi'
 }
 
 load () {
@@ -39,10 +34,6 @@ load () {
       case $1 in
         bun)
           _load_bun
-          ;;
-
-        rust)
-          _load_rust
           ;;
 
         op)
@@ -73,7 +64,6 @@ load () {
     done
   else
     _load_bun
-    _load_rust
     _load_op
     _load_gcloud
     _load_navi
@@ -83,7 +73,7 @@ load () {
 }
 
 _load_completion () {
-  _shared_generate_completion 'bun rust op gcloud navi'
+  _shared_generate_completion 'bun op gcloud navi'
 }
 
 complete -F _load_completion load
