@@ -1,0 +1,26 @@
+# Rime hangul settings
+# encoding: utf-8
+
+patch:
+  recognizer/patterns/reverse_lookup:
+  translator/dictionary: hangul.extended
+  translator/enable_user_dict: false
+  translator/enable_completion: false
+  # translator/preedit_format/+:
+  #   - "xform|ㄱㅅ|ㄳ|"
+  #   - "xform|ㄴㅊ|ㄵ|"
+  #   - "xform|ㄴㅎ|ㄶ|"
+  #   - "xform|ㄹㄱ|ㄺ|"
+  #   - "xform|ㄹㅂ|ㄼ|"
+  #   - "xform|ㄹㅅ|ㄽ|"
+  #   - "xform|ㄹㅁ|ㄻ|"
+  #   - "xform|ㄹㅌ|ㄾ|"
+  #   - "xform|ㄹㅍ|ㄿ|"
+  #   - "xform|ㄹㅎ|ㅀ|"
+  #   - "xform|ㅂㅅ|ㅄ|"
+  ascii_composer:
+    import_preset: default
+  # punctuator/use_space: true
+  # punctuator/half_shape:
+  #   ".": { commit: "." }
+  #   " ": { commit: " " }
