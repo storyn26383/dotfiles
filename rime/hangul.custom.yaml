@@ -1,0 +1,10 @@
+# Rime hangul settings
+# encoding: utf-8
+
+patch:
+  recognizer/patterns/reverse_lookup:
+  translator/dictionary: hangul.extended
+  translator/enable_user_dict: false
+  translator/enable_completion: false
+  ascii_composer:
+    import_preset: default
