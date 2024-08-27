@@ -4,7 +4,7 @@
 patch:
   schema_list:
     - schema: cangjie5
-    - schema: hangul
+    # - schema: hangul
   menu/page_size: 9
   ascii_composer/good_old_caps_lock: false
   ascii_composer/switch_key/Caps_Lock: commit_code
