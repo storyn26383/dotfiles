@@ -12,5 +12,5 @@ patch:
     # org.alacritty:
     #   ascii_mode: true
     #   vim_mode: true
-    com.raycast.macos:
-      ascii_mode: true
+    # com.raycast.macos:
+    #   ascii_mode: true
