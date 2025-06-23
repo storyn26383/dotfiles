@@ -50,3 +50,4 @@ source $DOTFILES/zsh/config/bat.zsh
 source $DOTFILES/zsh/config/php.zsh
 source $DOTFILES/zsh/config/go.zsh
 source $DOTFILES/zsh/config/dart.zsh
+source $DOTFILES/zsh/config/tmux.zsh
