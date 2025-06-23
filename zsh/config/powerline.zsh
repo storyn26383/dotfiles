@@ -13,6 +13,6 @@ function set_poshcontext() {
 
 # hook
 function after_keymap_changed() {
-  prompt_ohmyposh_precmd
+  _omp_precmd
   zle reset-prompt
 }
