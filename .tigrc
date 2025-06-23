@@ -4,6 +4,11 @@ set refs-view-id = yes
 set split-view-width = 80%
 set split-view-height = 80%
 
+bind generic o enter
+bind generic <Esc> view-close
+
+bind search <Esc> view-close
+
 bind main ! ?git revert %(commit)
 bind main 4 ?git rebase -i %(commit)^
 bind main S ?git stash

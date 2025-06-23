@@ -29,6 +29,9 @@ export LC_CTYPE=en_US.UTF-8
 # Preferred editor for local and remote sessions
 export EDITOR=nvim
 
+# Disable escape sequence processing
+export ESCDELAY=0
+
 # history file
 export HISTSIZE=2000
 export SAVEHIST=2000
