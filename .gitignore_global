@@ -8,3 +8,4 @@ tags.vendor
 .vimrc
 .nvimrc
 .nvim.lua
+.cursorrules
