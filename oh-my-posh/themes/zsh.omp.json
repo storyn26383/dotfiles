@@ -73,7 +73,7 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": " ʕ\u2022\u1d25\u2022ʔ ",
+          "template": " {{ .UserName }}@{{ .HostName }} ",
           "foreground": "p:white",
           "powerline_symbol": "\ue0b0",
           "background": "p:darkblue",
