@@ -2,54 +2,54 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
     "black": "16",
-    "white": "231",
-    "green": "2",
-    "darkestgreen": "22",
-    "darkgreen": "28",
-    "mediumgreen": "70",
-    "brightgreen": "148",
-    "darkestcyan": "23",
-    "darkcyan": "74",
-    "mediumcyan": "117",
     "brightcyan": "159",
-    "darkestblue": "24",
-    "darkblue": "31",
-    "red": "1",
-    "darkestred": "52",
-    "darkred": "88",
-    "mediumred": "124",
-    "brightred": "160",
-    "brightestred": "196",
-    "darkestpurple": "55",
-    "mediumpurple": "98",
-    "brightpurple": "189",
-    "darkorange": "94",
-    "mediumorange": "166",
-    "brightorange": "208",
     "brightestorange": "214",
-    "yellow": "11",
+    "brightestred": "196",
+    "brightgreen": "148",
+    "brightorange": "208",
+    "brightpurple": "189",
+    "brightred": "160",
     "brightyellow": "220",
+    "darkblue": "31",
+    "darkcyan": "74",
+    "darkestblue": "24",
+    "darkestcyan": "23",
+    "darkestgreen": "22",
+    "darkestpurple": "55",
+    "darkestred": "52",
+    "darkgreen": "28",
+    "darkorange": "94",
+    "darkorange3": "166",
+    "darkred": "88",
+    "gold3": "178",
     "gray0": "233",
     "gray1": "235",
+    "gray10": "252",
+    "gray11": "234",
     "gray2": "236",
     "gray3": "239",
     "gray4": "240",
     "gray5": "241",
     "gray6": "244",
     "gray7": "245",
+    "gray70": "249",
     "gray8": "247",
     "gray9": "250",
-    "gray10": "252",
-    "gray11": "234",
     "gray90": "254",
-    "gray70": "249",
+    "green": "2",
+    "khaki1": "228",
     "lightyellowgreen": "106",
-    "gold3": "178",
+    "mediumcyan": "117",
+    "mediumgreen": "70",
+    "mediumorange": "166",
+    "mediumpurple": "98",
+    "mediumred": "124",
     "orangered": "202",
-    "steelblue": "67",
-    "darkorange3": "166",
+    "red": "1",
     "skyblue1": "117",
-    "khaki1": "228"
+    "steelblue": "67",
+    "white": "231",
+    "yellow": "11"
   },
   "blocks": [
     {
@@ -57,44 +57,54 @@
       "alignment": "left",
       "segments": [
         {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " <b>{{ if matchP \"main|viins\" .Env.POSH_VI_KEYMAP }}INSERT{{ else }}COMMAND{{ end }}</b> ",
+          "foreground": "p:darkestgreen",
           "background": "p:brightgreen",
+          "type": "text",
+          "style": "diamond",
           "background_templates": [
             "{{ if matchP \"main|viins\" .Env.POSH_VI_KEYMAP }}p:brightgreen{{ else }}p:white{{ end }}"
-          ],
-          "foreground": "p:darkestgreen",
-          "style": "diamond",
-          "type": "text",
-          "template": " <b>{{ if matchP \"main|viins\" .Env.POSH_VI_KEYMAP }}INSERT{{ else }}COMMAND{{ end }}</b> "
+          ]
         },
         {
-          "background": "p:darkblue",
-          "foreground": "p:white",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "type": "session",
-          "template": " ʕ•ᴥ•ʔ "
-        },
-        {
-          "background": "p:gray4",
-          "foreground": "p:gray9",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "type": "path",
           "properties": {
-            "folder_separator_icon": " <p:gray7></> ",
-            "style": "agnoster_short",
-            "max_depth": 5,
-            "right_format": "<p:gray10><b>%s</b></>"
+            "cache_duration": "none"
           },
-          "template": " {{ if matchP \"^[^/~]\" .Path }}/ <p:gray7></> {{ end }}{{ if matchP \"^[^]+$\" .Path }}<p:gray10><b>{{ .Path }}</b></>{{ else }}{{ .Path }}{{ end }} "
+          "template": " ʕ\u2022\u1d25\u2022ʔ ",
+          "foreground": "p:white",
+          "powerline_symbol": "\ue0b0",
+          "background": "p:darkblue",
+          "type": "session",
+          "style": "powerline"
         },
         {
-          "background": "p:mediumorange",
-          "foreground": "p:brightyellow",
-          "style": "powerline",
+          "properties": {
+            "cache_duration": "none",
+            "folder_separator_icon": " <p:gray7>\ue0b1</> ",
+            "max_depth": 5,
+            "right_format": "<p:gray10><b>%s</b></>",
+            "style": "agnoster_short"
+          },
+          "template": " {{ if matchP \"^[^/~]\" .Path }}/ <p:gray7>\ue0b1</> {{ end }}{{ if matchP \"^[^\ue0b1]+$\" .Path }}<p:gray10><b>{{ .Path }}</b></>{{ else }}{{ .Path }}{{ end }} ",
+          "foreground": "p:gray9",
           "powerline_symbol": "\ue0b0",
+          "background": "p:gray4",
+          "type": "path",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{ if gt (.Env.POSH_JOBNUM | int) 0 }} {{ .Env.POSH_JOBNUM }} {{ end }}",
+          "foreground": "p:brightyellow",
+          "powerline_symbol": "\ue0b0",
+          "background": "p:mediumorange",
           "type": "text",
-          "template": "{{ if gt (.Env.POSH_JOBNUM | int) 0 }} {{ .Env.POSH_JOBNUM }} {{ end }}"
+          "style": "powerline"
         }
       ]
     },
@@ -103,29 +113,33 @@
       "alignment": "right",
       "segments": [
         {
-          "background": "p:darkestred",
-          "foreground": "p:white",
-          "style": "diamond",
+          "properties": {
+            "cache_duration": "none"
+          },
           "leading_diamond": "\ue0b2",
+          "template": " {{ if gt .Code 0 }}{{ .Code }}{{ end }} ",
+          "foreground": "p:white",
+          "background": "p:darkestred",
           "type": "status",
-          "template": " {{ if gt .Code 0 }}{{ .Code }}{{ end }} "
+          "style": "diamond"
         },
         {
-          "background": "p:gray2",
-          "foreground": "p:gray9",
-          "style": "diamond",
-          "leading_diamond": "\ue0b2",
-          "type": "git",
           "properties": {
+            "branch_icon": "\ue0a0 ",
+            "cache_duration": "none",
             "fetch_stash_count": true,
-            "fetch_status": true,
-            "branch_icon": "\ue0a0 "
+            "fetch_status": true
           },
-          "template": "{{ if gt .StashCount 0 }} <p:brightyellow>ST {{ .StashCount }}</> {{ if or (.Working.Changed) (.Staging.Changed) }}<p:brightyellow>{{ else }}<p:gray7>{{ end }}</>{{ end }} {{ if or (.Working.Changed) (.Staging.Changed) }}<p:brightyellow>{{ else }}<p:gray9>{{ end }}{{ .HEAD }}</> "
+          "leading_diamond": "\ue0b2",
+          "template": "{{ if gt .StashCount 0 }} <p:brightyellow>ST {{ .StashCount }}</> {{ if or (.Working.Changed) (.Staging.Changed) }}<p:brightyellow>{{ else }}<p:gray7>{{ end }}\ue0b3</>{{ end }} {{ if or (.Working.Changed) (.Staging.Changed) }}<p:brightyellow>{{ else }}<p:gray9>{{ end }}{{ .HEAD }}</> ",
+          "foreground": "p:gray9",
+          "background": "p:gray2",
+          "type": "git",
+          "style": "diamond"
         }
       ]
     }
   ],
-  "final_space": true,
-  "version": 2
+  "version": 3,
+  "final_space": true
 }
