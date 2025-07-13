@@ -67,7 +67,7 @@ waltily () {
           ;;
 
         *)
-          echo 'Unknow command:' $1
+          echo 'Unknown command:' $1
           _waltily_usage
           return
           ;;
@@ -91,7 +91,7 @@ waltily () {
           ;;
 
         *)
-          echo 'Unknow command:' $1
+          echo 'Unknown command:' $1
           _waltily_usage
           return
           ;;
@@ -103,7 +103,7 @@ waltily () {
       ;;
 
     *)
-      echo 'Unknow project:' $1
+      echo 'Unknown project:' $1
       _waltily_usage
       ;;
   esac
