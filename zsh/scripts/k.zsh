@@ -83,7 +83,7 @@ k () {
       ;;
 
     help|-h|-help|--help)
-      k-usage
+      _k_usage
       ;;
 
     *)
