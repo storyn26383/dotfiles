@@ -43,7 +43,7 @@ _g_commands_completion () {
 _g_completion () {
   if [ ${#COMP_WORDS[@]} -gt 1 ]; then
     case "${COMP_WORDS[1]}" in
-      use) _g_branches_completion;;
+      merge-and-push) _g_branches_completion;;
       *) _g_commands_completion;;
     esac
   else
