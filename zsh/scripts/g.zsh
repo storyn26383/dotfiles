@@ -11,7 +11,7 @@ _k_usage () {
   echo 'g merge-and-push <branch> <target_branch>    merge branch and push to target branch'
 }
 
-k () {
+g () {
   case $1 in
     merge-and-push)
       _g_merge_and_push $(git branch --show-current) $2
@@ -26,7 +26,7 @@ k () {
       ;;
 
     *)
-      echo 'Unknow command:' $1
+      echo 'Unknown command:' $1
       _g_usage
       ;;
   esac
