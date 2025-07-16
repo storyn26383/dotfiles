@@ -9,3 +9,5 @@ tags.vendor
 .nvimrc
 .nvim.lua
 .cursorrules
+.claude/settings.local.json
+CLAUDE.md
