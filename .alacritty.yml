@@ -29,7 +29,7 @@ shell:
   program: /bin/zsh
   args:
     - -lic
-    - 'tmux new -ADs Sasaya'
+    - "mosh cube -- ssh mini -t 'tmux new -ADs Sasaya'"
 
 key_bindings:
   - { key: Key0,   mods: Command, action: ResetFontSize    }
