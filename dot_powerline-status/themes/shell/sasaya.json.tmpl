@@ -10,7 +10,11 @@
       },
       {
         "type": "string",
+        {{ if eq .chezmoi.hostname "Raspberry-Pi" -}}
         "contents": "ʕ•ᴥ•ʔ",
+        {{ else -}}
+        "contents": "｡゜(｀Д´)゜｡",
+        {{ end -}}
         "name": "user",
         "priority": 30
       },

@@ -1,26 +1,26 @@
 _load_nvm () {
   echo 'Loading nvm...'
-  source $DOTFILES/zsh/config/nvm.zsh
+  source $ZSH/custom/config/nvm.zsh
 }
 
 _load_bun () {
   echo 'Loading bun...'
-  source $DOTFILES/zsh/config/bun.zsh
+  source $ZSH/custom/config/bun.zsh
 }
 
 _load_op () {
   echo 'Loading 1password...'
-  source $DOTFILES/zsh/config/1password.zsh
+  source $ZSH/custom/config/1password.zsh
 }
 
 _load_gcloud () {
   echo 'Loading gcloud...'
-  source $DOTFILES/zsh/config/gcloud.zsh
+  source $ZSH/custom/config/gcloud.zsh
 }
 
 _load_navi () {
   echo 'Loading navi...'
-  source $DOTFILES/zsh/config/navi.zsh
+  source $ZSH/custom/config/navi.zsh
 }
 
 _load_usage () {

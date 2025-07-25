@@ -60,20 +60,24 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": " <b>{{ if matchP \"main|viins\" .Env.POSH_VI_KEYMAP }}INSERT{{ else }}COMMAND{{ end }}</b> ",
+          "template": "{{ " <b>{{ if matchP \\\"main|viins\\\" .Env.POSH_VI_KEYMAP }}INSERT{{ else }}COMMAND{{ end }}</b> " }}",
           "foreground": "p:darkestgreen",
           "background": "p:brightgreen",
           "type": "text",
           "style": "diamond",
           "background_templates": [
-            "{{ if matchP \"main|viins\" .Env.POSH_VI_KEYMAP }}p:brightgreen{{ else }}p:white{{ end }}"
+            "{{ "{{ if matchP \\\"main|viins\\\" .Env.POSH_VI_KEYMAP }}p:brightgreen{{ else }}p:white{{ end }}" }}"
           ]
         },
         {
           "properties": {
             "cache_duration": "none"
           },
+          {{ if eq .chezmoi.hostname "Raspberry-Pi" -}}
           "template": " ʕ\u2022\u1d25\u2022ʔ ",
+          {{ else -}}
+          "template": "{{ " {{ .UserName }}@{{ .HostName }} " }}",
+          {{ end -}}
           "foreground": "p:white",
           "powerline_symbol": "\ue0b0",
           "background": "p:darkblue",
@@ -88,7 +92,7 @@
             "right_format": "<p:gray10><b>%s</b></>",
             "style": "agnoster_short"
           },
-          "template": " {{ if matchP \"^[^/~]\" .Path }}/ <p:gray7>\ue0b1</> {{ end }}{{ if matchP \"^[^\ue0b1]+$\" .Path }}<p:gray10><b>{{ .Path }}</b></>{{ else }}{{ .Path }}{{ end }} ",
+          "template": "{{ " {{ if matchP \\\"^[^/~]\\\" .Path }}/ <p:gray7>\ue0b1</> {{ end }}{{ if matchP \\\"^[^\ue0b1]+$\\\" .Path }}<p:gray10><b>{{ .Path }}</b></>{{ else }}{{ .Path }}{{ end }} " }}",
           "foreground": "p:gray9",
           "powerline_symbol": "\ue0b0",
           "background": "p:gray4",
@@ -99,7 +103,7 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "{{ if gt (.Env.POSH_JOBNUM | int) 0 }} {{ .Env.POSH_JOBNUM }} {{ end }}",
+          "template": "{{ "{{ if gt (.Env.POSH_JOBNUM | int) 0 }} {{ .Env.POSH_JOBNUM }} {{ end }}" }}",
           "foreground": "p:brightyellow",
           "powerline_symbol": "\ue0b0",
           "background": "p:mediumorange",
@@ -117,7 +121,7 @@
             "cache_duration": "none"
           },
           "leading_diamond": "\ue0b2",
-          "template": " {{ if gt .Code 0 }}{{ .Code }}{{ end }} ",
+          "template": "{{ " {{ if gt .Code 0 }}{{ .Code }}{{ end }} " }}",
           "foreground": "p:white",
           "background": "p:darkestred",
           "type": "status",
@@ -131,7 +135,7 @@
             "fetch_status": true
           },
           "leading_diamond": "\ue0b2",
-          "template": "{{ if gt .StashCount 0 }} <p:brightyellow>ST {{ .StashCount }}</> {{ if or (.Working.Changed) (.Staging.Changed) }}<p:brightyellow>{{ else }}<p:gray7>{{ end }}\ue0b3</>{{ end }} {{ if or (.Working.Changed) (.Staging.Changed) }}<p:brightyellow>{{ else }}<p:gray9>{{ end }}{{ .HEAD }}</> ",
+          "template": "{{ "{{ if gt .StashCount 0 }} <p:brightyellow>ST {{ .StashCount }}</> {{ if or (.Working.Changed) (.Staging.Changed) }}<p:brightyellow>{{ else }}<p:gray7>{{ end }}\ue0b3</>{{ end }} {{ if or (.Working.Changed) (.Staging.Changed) }}<p:brightyellow>{{ else }}<p:gray9>{{ end }}{{ .HEAD }}</> " }}",
           "foreground": "p:gray9",
           "background": "p:gray2",
           "type": "git",
