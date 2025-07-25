@@ -4,4 +4,11 @@
 ./nvim
 ./phpactor
 ./zsh
+./dot_ctags
+./dot_ctags.d
+./dot_ideavimrc
+./dot_skhdrc
+./dot_themerc
+./dot_xvimrc
+./dot_yabairc
 ./README.md
