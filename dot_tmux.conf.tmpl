@@ -3,11 +3,7 @@ run-shell "powerline-daemon -q"
 source "$POWERLINE_PATH/bindings/tmux/powerline.conf"
 set -g status-interval 1
 set -g status-position top
-{{ if eq .chezmoi.hostname "mini" -}}
 set -qg status-left "#[fg=colour233]#[bg=colour231] • • • #S #[fg=colour231]#[bg=colour233] #(env $POWERLINE_COMMAND $POWERLINE_COMMAND_ARGS tmux left --width=`tmux display -p '#''{client_width}'` -R width_adjust=`tmux show-options -g status-right-length | cut -d' ' -f2` -R pane_id=\"`tmux display -p '#''D'`\")"
-{{ else -}}
-set -qg status-left "#[fg=colour233]#[bg=colour231] #S #[fg=colour231]#[bg=colour233] #(env $POWERLINE_COMMAND $POWERLINE_COMMAND_ARGS tmux left --width=`tmux display -p '#''{client_width}'` -R width_adjust=`tmux show-options -g status-right-length | cut -d' ' -f2` -R pane_id=\"`tmux display -p '#''D'`\")"
-{{ end -}}
 
 # disable auto rename
 set -g allow-rename off
