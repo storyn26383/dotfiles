@@ -49,4 +49,3 @@ source $ZSH/custom/config/bat.zsh
 source $ZSH/custom/config/php.zsh
 source $ZSH/custom/config/go.zsh
 source $ZSH/custom/config/dart.zsh
-source $ZSH/custom/config/tmux.zsh
