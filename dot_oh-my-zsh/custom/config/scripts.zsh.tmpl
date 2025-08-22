@@ -3,3 +3,4 @@ source $ZSH/custom/scripts/load.zsh
 source $ZSH/custom/scripts/waltily.zsh
 source $ZSH/custom/scripts/g.zsh
 {{ if eq .chezmoi.hostname "mini" -}} source $ZSH/custom/scripts/tmux.zsh {{ end -}}
+{{ if eq .chezmoi.hostname "Raspberry-Pi" -}} source $ZSH/custom/scripts/server.zsh {{ end -}}
