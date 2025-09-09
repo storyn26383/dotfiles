@@ -3,7 +3,7 @@ _server_cube () {
 }
 
 _server_mini () {
-  mosh cube -- ssh mini -t 'tmux new -ADs Sasaya'
+  mosh cube -- ssh mini -t "source ~/.zshrc && tmux new -ADs Sasaya"
 }
 
 server () {
