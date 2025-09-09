@@ -17,7 +17,7 @@ server () {
       ;;
 
     *)
-      echo 'Unknow server:' $1
+      echo 'Unknown server:' $1
       ;;
   esac
 }

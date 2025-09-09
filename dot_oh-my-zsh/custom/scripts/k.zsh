@@ -87,7 +87,7 @@ k () {
       ;;
 
     *)
-      echo 'Unknow command:' $1
+      echo 'Unknown command:' $1
       _k_usage
       ;;
   esac

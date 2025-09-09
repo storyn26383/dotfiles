@@ -54,7 +54,7 @@ load () {
           ;;
 
         *)
-          echo 'Unknow script:' $1
+          echo 'Unknown script:' $1
           _load_usage
           return
           ;;
