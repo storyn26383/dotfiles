@@ -6,8 +6,8 @@ tmux-init() {
 
   tmux \
     rename-window -t 0 k9s \; \
-    new-window -n api -c $api_path \; split-window -t api -l 10 -c $docker_path \; select-pane -t 0 \; \
-    new-window -n hyperf -c $hyperf_path \; split-window -t hyperf -l 10 -c $docker_path \; select-pane -t 0 \; \
+    new-window -n api -c $api_path \; split-window -t api -l 10 -c $api_path \; select-pane -t 0 \; \
+    new-window -n hyperf -c $hyperf_path \; split-window -t hyperf -l 10 -c $hyperf_path \; select-pane -t 0 \; \
     new-window -n openim -c $openim_api_path \; split-window -t openim -l 10 -c $openim_api_path \; select-pane -t 0 \; \
     select-window -t k9s
 }
