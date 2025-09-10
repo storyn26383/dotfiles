@@ -6,6 +6,10 @@ _server_mini () {
   mosh pi -- ssh mini -t "source ~/.zshrc && tmux new -ADs Sasaya"
 }
 
+_server_shared () {
+  mosh cube -- ssh mini -t "source ~/.zshrc && tmux new -t Sasaya -s Shared"
+}
+
 server () {
   case $1 in
     cube)
@@ -16,6 +20,10 @@ server () {
       _server_mini
       ;;
 
+    shared)
+      _server_shared
+      ;;
+
     *)
       echo 'Unknown server:' $1
       ;;
@@ -23,7 +31,7 @@ server () {
 }
 
 _servers_completion () {
-  _shared_generate_completion 'cube mini'
+  _shared_generate_completion 'cube mini shared'
 }
 
 complete -F _servers_completion server
