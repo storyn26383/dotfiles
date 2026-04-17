@@ -3,11 +3,6 @@ _load_nvm () {
   source $ZSH/custom/config/nvm.zsh
 }
 
-_load_bun () {
-  echo 'Loading bun...'
-  source $ZSH/custom/config/bun.zsh
-}
-
 _load_op () {
   echo 'Loading 1password...'
   source $ZSH/custom/config/1password.zsh
@@ -25,17 +20,13 @@ _load_navi () {
 
 _load_usage () {
   echo 'Usage: load [SCRIPT...]'
-  echo 'Supported scripts: bun, op, gcloud, navi'
+  echo 'Supported scripts: op, gcloud, navi'
 }
 
 load () {
   if [ $# -ne 0 ]; then
     while [ $# != 0 ]; do
       case $1 in
-        bun)
-          _load_bun
-          ;;
-
         op)
           _load_op
           ;;
@@ -63,7 +54,6 @@ load () {
       shift
     done
   else
-    _load_bun
     _load_op
     _load_gcloud
     _load_navi
@@ -73,7 +63,7 @@ load () {
 }
 
 _load_completion () {
-  _shared_generate_completion 'bun op gcloud navi'
+  _shared_generate_completion 'op gcloud navi'
 }
 
 complete -F _load_completion load
