@@ -8,7 +8,7 @@ _node16 () {
     -v ~/.yarnrc:/.yarnrc \
     -w /app \
     -u `id -u`:`id -g` \
-    -p 3000:3000 \
+    -p 3456:3000 \
     node:16-alpine $@
 }
 
@@ -59,11 +59,11 @@ waltily () {
         artisan)
           shift
           shift
-          docker run --rm -it -v `pwd`:/app -v ~/.composer:/.composer -v ~/.config/psysh:/.config/psysh --link mysql -w /app -u `id -u`:`id -g` -p 8000:8000 waltily.laravel php artisan $@
+          docker run --rm -it -v `pwd`:/app -v ~/.composer:/.composer -v ~/.config/psysh:/.config/psysh --link mysql -w /app -u `id -u`:`id -g` waltily.laravel php artisan $@
           ;;
 
         serve)
-          docker run --rm -it -v `pwd`:/app -v ~/.composer:/.composer -v ~/.config/psysh:/.config/psysh --link mysql -w /app -u `id -u`:`id -g` -p 8000:8000 waltily.laravel php artisan serve --host 0.0.0.0
+          docker run --rm -it -v `pwd`:/app -v ~/.composer:/.composer -v ~/.config/psysh:/.config/psysh --link mysql -w /app -u `id -u`:`id -g` -p 8765:8000 waltily.laravel php artisan serve --host 0.0.0.0
           ;;
 
         *)
@@ -87,7 +87,8 @@ waltily () {
           ;;
 
         serve)
-          _node16 yarn serve --port 3000 --public ${TUNNEL_DOMAIN}
+          # _node16 yarn serve --port 3000 --public ${TUNNEL_DOMAIN}
+          _node16 yarn serve --port 3000 --public 192.168.99.66:8080
           ;;
 
         *)

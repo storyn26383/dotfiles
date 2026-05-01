@@ -7,7 +7,7 @@ _server_mini () {
 }
 
 _server_shared () {
-  mosh cube -- ssh mini -t "source ~/.zshrc && tmux new -t Sasaya -s Shared"
+  mosh pi -- ssh mini -t "source ~/.zshrc && tmux new -t Sasaya -s Shared"
 }
 
 server () {
