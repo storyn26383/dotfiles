@@ -4,17 +4,22 @@ tmux-start() {
 
 {{ if eq .chezmoi.hostname "mini" -}}
 tmux-init() {
-  golden_path=~/Coding/UniverseTech/api
-  live_path=~/Coding/UniverseTech/live-api
-  hyperf_path=~/Coding/UniverseTech/hyperf-api
-  openim_path=~/Coding/UniverseTech/openim/openim-api
+  workspace_path=~/Coding/Sandbox/workspace
+  golden_path=$workspace_path/universetech/golden-api
+  live_path=$workspace_path/universetech/live-api
+  hyperf_path=$workspace_path/universetech/hyperf-api
+  openim_path=$workspace_path/universetech/openim/openim-api
+  openim_app_path=$workspace_path/universetech/openim/openim-app
+  openim_server_path=$workspace_path/universetech/openim/openim-server
 
   tmux \
     rename-window -t 0 k9s \; \
     new-window -n golden -c $golden_path \; split-window -t golden -l 10 -c $golden_path \; select-pane -t 0 \; \
-    new-window -n openim -c $openim_path \; split-window -t openim -l 10 -c $openim_path \; select-pane -t 0 \; \
-    new-window -n live -c $live_path \; split-window -t live -l 10 -c $live_path \; select-pane -t 0 \; \
     new-window -n hyperf -c $hyperf_path \; split-window -t hyperf -l 10 -c $hyperf_path \; select-pane -t 0 \; \
+    new-window -n live -c $live_path \; split-window -t live -l 10 -c $live_path \; select-pane -t 0 \; \
+    new-window -n openim -c $openim_path \; split-window -t openim -l 10 -c $openim_path \; select-pane -t 0 \; \
+    new-window -n app -c $openim_app_path \; split-window -t app -l 10 -c $openim_app_path \; select-pane -t 0 \; \
+    new-window -n server -c $openim_server_path \; split-window -t server -l 10 -c $openim_server_path \; select-pane -t 0 \; \
     select-window -t k9s
 }
 {{ end -}}
