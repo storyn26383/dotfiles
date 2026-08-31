@@ -18,9 +18,14 @@ _load_navi () {
   source $ZSH/custom/config/navi.zsh
 }
 
+_load_tsh () {
+  echo 'Loading tsh...'
+  source $ZSH/custom/config/tsh.zsh
+}
+
 _load_usage () {
   echo 'Usage: load [SCRIPT...]'
-  echo 'Supported scripts: op, gcloud, navi'
+  echo 'Supported scripts: op, gcloud, navi, tsh'
 }
 
 load () {
@@ -37,6 +42,10 @@ load () {
 
         navi)
           _load_navi
+          ;;
+
+        tsh)
+          _load_tsh
           ;;
 
         help|-h|-help|--help)
@@ -57,13 +66,14 @@ load () {
     _load_op
     _load_gcloud
     _load_navi
+    _load_tsh
   fi
 
   echo 'Done!'
 }
 
 _load_completion () {
-  _shared_generate_completion 'op gcloud navi'
+  _shared_generate_completion 'op gcloud navi tsh'
 }
 
 complete -F _load_completion load
