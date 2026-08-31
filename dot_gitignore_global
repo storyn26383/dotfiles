@@ -9,3 +9,4 @@ tags.vendor
 .nvimrc
 .nvim.lua
 .claude/settings.local.json
+.envrc
