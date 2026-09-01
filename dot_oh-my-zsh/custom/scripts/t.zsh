@@ -1,3 +1,9 @@
+_T_CACHE_DIR=~/.cache/t
+
+_t_clear_cache () {
+  rm -rf $_T_CACHE_DIR
+}
+
 _t_login () {
   tsh status >/dev/null 2>&1 && return
 
@@ -58,6 +64,7 @@ _t_usage () {
   echo 't login                    log in with 1password credentials'
   echo 't sh <host> [user]         ssh to node, default login root'
   echo 't db <db> [port] [host]    start local db proxy, default random port on localhost'
+  echo 't clear-cache              clear cached completion data'
 }
 
 t () {
@@ -74,6 +81,10 @@ t () {
     db)
       shift
       _t_db $@
+      ;;
+
+    clear-cache)
+      _t_clear_cache
       ;;
 
     help|-h|-help|--help)
@@ -100,16 +111,21 @@ _t_logins () {
 }
 
 _t_cached () {
-  local cache_file=${TMPDIR:-/tmp}/.t-cache-$1
+  local cache_file=$_T_CACHE_DIR/$1
   local output
 
-  if [ -n "$(find $cache_file -mmin -1 2>/dev/null)" ]; then
+  if [ -f $cache_file ]; then
     cat $cache_file
     return
   fi
 
   output=$($1)
-  [ -n "$output" ] && printf '%s\n' "$output" > $cache_file
+
+  if [ -n "$output" ]; then
+    mkdir -p $_T_CACHE_DIR
+    printf '%s\n' "$output" > $cache_file
+  fi
+
   printf '%s\n' "$output"
 }
 
@@ -126,7 +142,7 @@ _t_logins_completion () {
 }
 
 _t_commands_completion () {
-  _shared_generate_completion 'login sh db help'
+  _shared_generate_completion 'login sh db clear-cache help'
 }
 
 _t_completion () {
