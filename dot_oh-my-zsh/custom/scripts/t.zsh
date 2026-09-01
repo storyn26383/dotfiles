@@ -21,7 +21,7 @@ _t_login () {
 set timeout 30
 log_user 0
 
-spawn tsh login --proxy=$env(TSH_PROXY) --mfa-mode=otp
+spawn tsh login --proxy=$env(TSH_PROXY) --mfa-mode=otp --ttl=525600
 
 expect {
   "Enter password for Teleport user" { send -- "$env(TSH_PASSWORD)\r" }
