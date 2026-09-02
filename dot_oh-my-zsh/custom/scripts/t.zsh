@@ -46,25 +46,39 @@ EOF
 }
 
 _t_sh () {
-  host=$1
-  user=${2:-root}
+  local host=$1
+  local user=${2:-$(_t_cached _t_logins | head -n 1)}
+
+  if [ -z "$user" ]; then
+    echo 'Failed to resolve default login, try: t login'
+    return 1
+  fi
+
   tsh ssh $user@$host
 }
 
 _t_db () {
-  db=$1
-  listen_args=()
-  [ -n "$2" ] && listen_args=(--port $2)
-  [ -n "$3" ] && listen_args=(--insecure-listen-anywhere --listen $3:$2)
-  tsh proxy db --tunnel $db $listen_args
+  local db=$1
+  local user=${2:-$(_t_db_users $db | head -n 1)}
+  local listen_args=()
+
+  if [ -z "$user" ]; then
+    echo 'Failed to resolve default db user for' $db
+    return 1
+  fi
+
+  [ -n "$3" ] && listen_args=(--port $3)
+  [ -n "$4" ] && listen_args=(--insecure-listen-anywhere --listen $4:$3)
+
+  tsh proxy db --tunnel --db-user $user $db $listen_args
 }
 
 _t_usage () {
   echo 'Usage: t <command>'
-  echo 't login                    log in with 1password credentials'
-  echo 't sh <host> [user]         ssh to node, default login root'
-  echo 't db <db> [port] [host]    start local db proxy, default random port on localhost'
-  echo 't clear-cache              clear cached completion data'
+  echo 't login                          log in with 1password credentials'
+  echo 't sh <host> [user]               ssh to node, default first allowed login'
+  echo 't db <db> [user] [port] [host]   start local db proxy, default first allowed db user, random port on localhost'
+  echo 't clear-cache                    clear cached completion data'
 }
 
 t () {
@@ -103,7 +117,15 @@ _t_nodes () {
 }
 
 _t_dbs () {
-  tsh db ls --format json | jq -r '.[].metadata.name'
+  tsh db ls --format json
+}
+
+_t_db_names () {
+  _t_cached _t_dbs | jq -r '.[].metadata.name'
+}
+
+_t_db_users () {
+  _t_cached _t_dbs | jq -r --arg db "$1" '.[] | select(.metadata.name == $db) | .users.allowed[]'
 }
 
 _t_logins () {
@@ -134,7 +156,11 @@ _t_nodes_completion () {
 }
 
 _t_dbs_completion () {
-  _shared_generate_completion "$(_t_cached _t_dbs)"
+  _shared_generate_completion "$(_t_db_names)"
+}
+
+_t_db_users_completion () {
+  _shared_generate_completion "$(_t_db_users $1)"
 }
 
 _t_logins_completion () {
@@ -159,8 +185,11 @@ _t_completion () {
     return
   fi
 
-  if [ $COMP_CWORD -eq 3 -a "${COMP_WORDS[1]}" = 'sh' ]; then
-    _t_logins_completion
+  if [ $COMP_CWORD -eq 3 ]; then
+    case "${COMP_WORDS[1]}" in
+      sh) _t_logins_completion;;
+      db) _t_db_users_completion "${COMP_WORDS[2]}";;
+    esac
     return
   fi
 
