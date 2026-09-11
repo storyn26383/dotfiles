@@ -1,0 +1,8 @@
+default_resource = "deployments"
+
+[keys.input]
+backspace = ["backspace", "ctrl-h"]
+
+[keys.command]
+up = ["up", "ctrl-p", "ctrl-k"]
+down = ["down", "ctrl-n", "ctrl-j"]
