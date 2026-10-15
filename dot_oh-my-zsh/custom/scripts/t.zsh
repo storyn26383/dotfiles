@@ -1,4 +1,5 @@
 _T_CACHE_DIR=~/.cache/t
+_T_OP_VAULT=Mini
 
 _t_clear_cache () {
   rm -rf $_T_CACHE_DIR
@@ -7,9 +8,9 @@ _t_clear_cache () {
 _t_login () {
   tsh status >/dev/null 2>&1 && return
 
-  export TSH_PROXY=$(op item get Teleport --fields label=proxy --reveal)
-  export TSH_PASSWORD=$(op item get Teleport --fields label=password --reveal)
-  export TSH_OTP=$(op item get Teleport --otp)
+  export TSH_PROXY=$(op item get Teleport --vault "$_T_OP_VAULT" --fields label=proxy --reveal)
+  export TSH_PASSWORD=$(op item get Teleport --vault "$_T_OP_VAULT" --fields label=password --reveal)
+  export TSH_OTP=$(op item get Teleport --vault "$_T_OP_VAULT" --otp)
 
   if [ -z "$TSH_PROXY" -o -z "$TSH_PASSWORD" -o -z "$TSH_OTP" ]; then
     unset TSH_PROXY TSH_PASSWORD TSH_OTP
