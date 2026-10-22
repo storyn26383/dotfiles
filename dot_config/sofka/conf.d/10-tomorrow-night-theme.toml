@@ -1,0 +1,35 @@
+# Tomorrow Night for Sofka.
+# Palette: https://github.com/chriskempson/tomorrow-theme
+# Copy into ~/.config/sofka/conf.d/ to load, then run :reload.
+# Sofka requires a built-in name; all 25 swatches are overridden below.
+
+[skin]
+name = "catppuccin-mocha"
+background = true
+
+[skin.colors]
+rosewater = "#f0c674"
+flamingo = "#de935f"
+pink = "#b294bb"
+mauve = "#b294bb"
+red = "#cc6666"
+maroon = "#cc6666"
+peach = "#de935f"
+yellow = "#f0c674"
+green = "#b5bd68"
+teal = "#8abeb7"
+sky = "#8abeb7"
+sapphire = "#81a2be"
+blue = "#81a2be"
+lavender = "#81a2be"
+text = "#c5c8c6"
+subtext1 = "#b4b7b4"
+subtext0 = "#a5a8a5"
+overlay1 = "#969896"
+overlay0 = "#808480"
+surface2 = "#4d5057"
+surface1 = "#373b41"
+surface0 = "#282a2e"
+base = "#1d1f21"
+mantle = "#191b1d"
+crust = "#16181a"
