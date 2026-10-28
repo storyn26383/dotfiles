@@ -48,7 +48,7 @@ multiplier = 0
 program = "/bin/zsh"
 
 [window]
-decorations = "transparent"
+decorations = "Buttonless"
 dynamic_title = false
 startup_mode = "Maximized"
 
