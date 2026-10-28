@@ -55,7 +55,6 @@ enabled = false
 
 [keys]
 # tmux default bindings
-new_tab = "prefix+c"
 next_tab = "prefix+n"
 previous_tab = "prefix+p"
 switch_tab = "prefix+1..9"
@@ -65,7 +64,7 @@ split_horizontal = "prefix+double_quote"
 split_vertical = "prefix+percent"
 cycle_pane_next = "prefix+o"
 last_pane = "prefix+semicolon"
-goto = "prefix+w"
+goto = "prefix+g"
 zoom = "prefix+z"
 copy_mode = "prefix+["
 detach = "prefix+d"
@@ -75,7 +74,9 @@ focus_pane_left = ["prefix+h", "prefix+left"]
 focus_pane_down = ["prefix+j", "prefix+down"]
 focus_pane_up = ["prefix+k", "prefix+up"]
 focus_pane_right = ["prefix+l", "prefix+right"]
-resize_mode = "prefix+r"
+# Inside resize mode herdr matches the key after `prefix+` on its own, so a bare q (or r) exits
+# like Esc. herdr rejects a prefix-less "q" because it would swallow typing.
+resize_mode = ["prefix+r", "prefix+q"]
 # herdr defaults kept
 settings = "prefix+s"
 reload_config = "prefix+shift+r"
@@ -95,6 +96,34 @@ swap_pane_right = ""
 cycle_pane_previous = ""
 close_pane = ""
 close_tab = ""
+new_tab = ""
+
+# new tab starts in $HOME; splits keep following the current pane's directory
+[[keys.command]]
+key = "prefix+c"
+type = "shell"
+command = '"$HERDR_BIN_PATH" tab create --workspace "$HERDR_ACTIVE_WORKSPACE_ID" --cwd "$HOME" --focus'
+
+# tmux `move-window -t N`: prompt for a tab number and move the current tab to that position.
+# zsh `vared` in the emacs keymap gives readline editing (C-h, C-a, C-e, C-k, C-u, C-w, ...);
+# Esc is bound to a widget that cancels, like Esc in tmux's command prompt. KEYTIMEOUT=1 makes a
+# bare Esc fire at once instead of waiting for a possible escape sequence. tab.move takes a 0-based
+# insertion point among the tabs *before* removal, so moving right needs one past the target;
+# out-of-range numbers clamp to the end.
+[[keys.command]]
+key = "prefix+period"
+type = "popup"
+width = 40
+height = 3
+command = '''exec zsh -f -c 'bindkey -e; KEYTIMEOUT=1; cancel() { exit 0 }; zle -N cancel; bindkey "^[" cancel; n=; vared -p "move-window to: " n; [[ $n == <1-> ]] || exit 0; tabs=$("$HERDR_BIN_PATH" tab list --workspace "$HERDR_ACTIVE_WORKSPACE_ID"); count=$(jq ".result.tabs | length" <<<"$tabs"); from=$(jq --arg t "$HERDR_ACTIVE_TAB_ID" ".result.tabs | map(.tab_id) | index(\$t) + 1" <<<"$tabs"); (( n > count )) && n=$count; (( n > from )) && n=$((n + 1)); printf "{\"id\":\"move\",\"method\":\"tab.move\",\"params\":{\"tab_id\":\"%s\",\"insert_index\":%d}}\n" "$HERDR_ACTIVE_TAB_ID" $((n - 1)) | nc -U -w 1 "$HERDR_SOCKET_PATH" >/dev/null' '''
+
+# tmux choose-tree style: one row per tab in this workspace (the built-in goto lists every pane)
+[[keys.command]]
+key = "prefix+w"
+type = "popup"
+width = "60%"
+height = "50%"
+command = '''"$HERDR_BIN_PATH" tab list --workspace "$HERDR_ACTIVE_WORKSPACE_ID" | jq -r '.result.tabs[] | "\(.tab_id)\t\(.number)  \(.label)  (\(.pane_count) panes)"' | fzf --delimiter='\t' --with-nth=2 --layout=reverse --no-info --prompt='tab> ' | cut -f1 | xargs -r "$HERDR_BIN_PATH" tab focus >/dev/null'''
 
 # tmux confirm-before for kill-pane
 [[keys.command]]
