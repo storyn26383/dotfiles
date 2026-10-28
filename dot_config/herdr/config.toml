@@ -1,0 +1,120 @@
+onboarding = false
+
+# Matches the tmux status bar drawn by powerline's `sasaya` colorscheme (xterm-256 indexes
+# noted beside each value). herdr has no such built-in, so every token is overridden on top
+# of catppuccin. Backgrounds are `reset` so the bar shows the terminal background (Alacritty
+# #181818); that is also what makes herdr draw the active tab text in surface_dim (white).
+# green/yellow/red are tmux's named ANSI colors (active pane border, copy-mode, bell), which
+# Alacritty renders from its default palette since dot_alacritty.toml sets none.
+[theme]
+name = "catppuccin"
+
+[theme.custom]
+accent = "#0087af"        # colour31 darkblue: current window, focused pane border, mode bar
+panel_bg = "reset"        # bar, popups, mode bar: terminal background
+sidebar_bg = "reset"
+active_row_bg = "#303030" # colour236 gray2
+selection_bg = "#4e4e4e"  # colour239
+surface0 = "reset"        # inactive tab background follows the terminal background, like the bar
+surface1 = "#303030"      # colour236 gray2
+surface_dim = "#ffffff"   # colour231 white: active tab text (also sidebar separators)
+overlay0 = "#808080"      # colour244 gray6: inactive window index, unfocused pane border
+overlay1 = "#bcbcbc"      # colour250 gray9: load / date text
+text = "#ffffff"          # colour231 white
+subtext0 = "#b2b2b2"      # colour249 gray70: inactive window name
+mauve = "#87d7ff"         # colour117 mediumcyan: resize mode
+green = "#90a959"         # ANSI green: tmux active pane border, done
+yellow = "#f4bf75"        # ANSI yellow: tmux copy-mode / message, working
+red = "#ac4242"           # ANSI red: tmux bell, blocked
+blue = "#0087af"          # colour31 darkblue
+teal = "#87d7ff"          # colour117 mediumcyan
+peach = "#d75f00"         # colour166 mediumorange: warnings
+
+[ui]
+mouse_capture = false
+pane_gaps = false
+pane_outer_borders = false
+pane_scrollbars = false
+prompt_new_tab_name = false
+sidebar_start_collapsed = true
+sidebar_collapsed_mode = "hidden"
+mobile_width_threshold = 0
+window_title = ""
+tab_bar_right_separator = " · "
+tab_bar_right = [
+  { type = "command", command = "{ cat /proc/loadavg 2>/dev/null || sysctl -n vm.loadavg; } | awk '{ gsub(/[{}]/, \"\"); printf \"%.1f %.1f %.1f\\n\", $1, $2, $3 }'", interval_seconds = 5, timeout_seconds = 2 },
+  { type = "datetime", format = "%Y-%m-%d" },
+  { type = "datetime", format = "%H:%M:%S" },
+]
+
+[ui.toast]
+delivery = "herdr"
+
+[ui.sound]
+enabled = false
+
+[keys]
+# tmux default bindings
+new_tab = "prefix+c"
+next_tab = "prefix+n"
+previous_tab = "prefix+p"
+switch_tab = "prefix+1..9"
+rename_tab = "prefix+comma"
+rename_workspace = "prefix+$"
+split_horizontal = "prefix+double_quote"
+split_vertical = "prefix+percent"
+cycle_pane_next = "prefix+o"
+last_pane = "prefix+semicolon"
+goto = "prefix+w"
+zoom = "prefix+z"
+copy_mode = "prefix+["
+detach = "prefix+d"
+help = "prefix+?"
+# bindings from dot_tmux.conf.tmpl
+focus_pane_left = ["prefix+h", "prefix+left"]
+focus_pane_down = ["prefix+j", "prefix+down"]
+focus_pane_up = ["prefix+k", "prefix+up"]
+focus_pane_right = ["prefix+l", "prefix+right"]
+resize_mode = "prefix+r"
+# herdr defaults kept
+settings = "prefix+s"
+reload_config = "prefix+shift+r"
+toggle_sidebar = "prefix+b"
+# herdr defaults disabled
+workspace_picker = ""
+open_notification_target = ""
+new_workspace = ""
+new_worktree = ""
+close_workspace = ""
+rename_pane = ""
+edit_scrollback = ""
+swap_pane_left = ""
+swap_pane_down = ""
+swap_pane_up = ""
+swap_pane_right = ""
+cycle_pane_previous = ""
+close_pane = ""
+close_tab = ""
+
+# tmux confirm-before for kill-pane
+[[keys.command]]
+key = "prefix+x"
+type = "popup"
+width = 40
+height = 3
+command = '''printf "kill-pane? (y/n) "; stty raw -echo; a=$(dd bs=1 count=1 2>/dev/null); stty -raw echo; [ "$a" = y ] && "$HERDR_BIN_PATH" pane close "$HERDR_ACTIVE_PANE_ID"'''
+
+# tmux confirm-before for kill-window
+[[keys.command]]
+key = "prefix+ampersand"
+type = "popup"
+width = 40
+height = 3
+command = '''printf "kill-window? (y/n) "; stty raw -echo; a=$(dd bs=1 count=1 2>/dev/null); stty -raw echo; [ "$a" = y ] && "$HERDR_BIN_PATH" tab close "$HERDR_ACTIVE_TAB_ID"'''
+
+# paste from system clipboard; pane.send_input wraps text in bracketed paste
+# when the pane enables it, unlike `herdr pane send-text`
+[[keys.command]]
+key = "prefix+]"
+type = "shell"
+command = '''pbpaste | jq -Rsc --arg pane "$HERDR_ACTIVE_PANE_ID" '{id: "paste", method: "pane.send_input", params: {pane_id: $pane, text: .}}' | nc -U -w 1 "$HERDR_SOCKET_PATH"'''
