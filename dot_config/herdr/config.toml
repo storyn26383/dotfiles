@@ -50,6 +50,10 @@ tab_bar_right = [
 [ui.toast]
 delivery = "herdr"
 
+# top-right, like tmux's status line; it covers the right end of the tab bar while shown
+[ui.toast.herdr]
+position = "top-right"
+
 [ui.sound]
 enabled = false
 
