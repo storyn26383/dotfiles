@@ -140,6 +140,14 @@ key = "prefix+ctrl+o"
 type = "shell"
 command = '''exec zsh -f -c 'request() { printf "{\"id\":\"rotate\",\"method\":\"%s\",\"params\":%s}\n" "$1" "$2" | nc -U -w 1 "$HERDR_SOCKET_PATH" >/dev/null; }; panes=($("$HERDR_BIN_PATH" pane list --workspace "$HERDR_ACTIVE_WORKSPACE_ID" | jq -r --arg t "$HERDR_ACTIVE_TAB_ID" ".result.panes[] | select(.tab_id == \$t) | .pane_id")); (( ${#panes} > 1 )) || exit 0; slot=${panes[(i)$HERDR_ACTIVE_PANE_ID]}; request pane.zoom "{\"pane_id\":\"$HERDR_ACTIVE_PANE_ID\",\"mode\":\"off\"}"; for (( i = 2; i <= ${#panes}; i++ )); do request pane.swap "{\"source_pane_id\":\"${panes[1]}\",\"target_pane_id\":\"${panes[i]}\"}"; done; rotated=($panes[2,-1] $panes[1]); request pane.focus "{\"pane_id\":\"${rotated[slot]}\"}"' '''
 
+# tmux next-layout (Space), reduced: 2 panes flip side by side <-> stacked, 3 panes main on top <->
+# main on the left, 4 panes add a 2x2 grid, other counts do nothing; every pane's process keeps
+# running. See next-layout.ts. Custom commands run under /bin/sh -lc, so bun is called by full path.
+[[keys.command]]
+key = "prefix+space"
+type = "shell"
+command = '"$HOME/.bun/bin/bun" "$HOME/.config/herdr/next-layout.ts"'
+
 # tmux confirm-before for kill-pane
 [[keys.command]]
 key = "prefix+x"
