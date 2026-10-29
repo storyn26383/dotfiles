@@ -121,13 +121,14 @@ width = 40
 height = 3
 command = '''exec zsh -f -c 'bindkey -e; KEYTIMEOUT=1; cancel() { exit 0 }; zle -N cancel; bindkey "^[" cancel; n=; vared -p "move-window to: " n; [[ $n == <1-> ]] || exit 0; tabs=$("$HERDR_BIN_PATH" tab list --workspace "$HERDR_ACTIVE_WORKSPACE_ID"); count=$(jq ".result.tabs | length" <<<"$tabs"); from=$(jq --arg t "$HERDR_ACTIVE_TAB_ID" ".result.tabs | map(.tab_id) | index(\$t) + 1" <<<"$tabs"); (( n > count )) && n=$count; (( n > from )) && n=$((n + 1)); printf "{\"id\":\"move\",\"method\":\"tab.move\",\"params\":{\"tab_id\":\"%s\",\"insert_index\":%d}}\n" "$HERDR_ACTIVE_TAB_ID" $((n - 1)) | nc -U -w 1 "$HERDR_SOCKET_PATH" >/dev/null' '''
 
-# tmux choose-tree style: one row per tab in this workspace (the built-in goto lists every pane)
+# tmux choose-tree style: one row per tab in this workspace (the built-in goto lists every pane);
+# the cursor starts on the current tab, like tmux, via fzf's pos() once the list has loaded
 [[keys.command]]
 key = "prefix+w"
 type = "popup"
 width = "60%"
 height = "50%"
-command = '''"$HERDR_BIN_PATH" tab list --workspace "$HERDR_ACTIVE_WORKSPACE_ID" | jq -r '.result.tabs[] | "\(.tab_id)\t\(.number)  \(.label)  (\(.pane_count) panes)"' | fzf --delimiter='\t' --with-nth=2 --layout=reverse --no-info --prompt='tab> ' | cut -f1 | xargs -r "$HERDR_BIN_PATH" tab focus >/dev/null'''
+command = '''tabs=$("$HERDR_BIN_PATH" tab list --workspace "$HERDR_ACTIVE_WORKSPACE_ID"); current=$(printf '%s' "$tabs" | jq --arg t "$HERDR_ACTIVE_TAB_ID" '.result.tabs | map(.tab_id) | index($t) + 1'); printf '%s' "$tabs" | jq -r '.result.tabs[] | "\(.tab_id)\t\(.number)  \(.label)  (\(.pane_count) panes)"' | fzf --delimiter='\t' --with-nth=2 --layout=reverse --no-info --prompt='tab> ' --bind="load:pos($current)" | cut -f1 | xargs -r "$HERDR_BIN_PATH" tab focus >/dev/null'''
 
 # tmux rotate-window (C-o): every pane moves one slot back in layout order and the first one wraps
 # to the last; focus stays on the same slot, now showing the pane rotated into it, and the tab is
