@@ -125,6 +125,16 @@ width = "60%"
 height = "50%"
 command = '''"$HERDR_BIN_PATH" tab list --workspace "$HERDR_ACTIVE_WORKSPACE_ID" | jq -r '.result.tabs[] | "\(.tab_id)\t\(.number)  \(.label)  (\(.pane_count) panes)"' | fzf --delimiter='\t' --with-nth=2 --layout=reverse --no-info --prompt='tab> ' | cut -f1 | xargs -r "$HERDR_BIN_PATH" tab focus >/dev/null'''
 
+# tmux rotate-window (C-o): every pane moves one slot back in layout order and the first one wraps
+# to the last; focus stays on the same slot, now showing the pane rotated into it, and the tab is
+# unzoomed. Swapping the first pane with each later one in turn walks it to the end and shifts the
+# rest back by one. Custom commands run under /bin/sh, so the body runs in zsh for its arrays, and
+# pane.focus by id is only reachable through the socket API.
+[[keys.command]]
+key = "prefix+ctrl+o"
+type = "shell"
+command = '''exec zsh -f -c 'request() { printf "{\"id\":\"rotate\",\"method\":\"%s\",\"params\":%s}\n" "$1" "$2" | nc -U -w 1 "$HERDR_SOCKET_PATH" >/dev/null; }; panes=($("$HERDR_BIN_PATH" pane list --workspace "$HERDR_ACTIVE_WORKSPACE_ID" | jq -r --arg t "$HERDR_ACTIVE_TAB_ID" ".result.panes[] | select(.tab_id == \$t) | .pane_id")); (( ${#panes} > 1 )) || exit 0; slot=${panes[(i)$HERDR_ACTIVE_PANE_ID]}; request pane.zoom "{\"pane_id\":\"$HERDR_ACTIVE_PANE_ID\",\"mode\":\"off\"}"; for (( i = 2; i <= ${#panes}; i++ )); do request pane.swap "{\"source_pane_id\":\"${panes[1]}\",\"target_pane_id\":\"${panes[i]}\"}"; done; rotated=($panes[2,-1] $panes[1]); request pane.focus "{\"pane_id\":\"${rotated[slot]}\"}"' '''
+
 # tmux confirm-before for kill-pane
 [[keys.command]]
 key = "prefix+x"
