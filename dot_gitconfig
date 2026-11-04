@@ -14,3 +14,10 @@
   path = nvim
 [mergetool "vimdiff"]
   cmd = "nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'"
+[rerere]
+  enabled = true
+  autoupdate = true
+[worktree]
+  useRelativePaths = true
+[init]
+  defaultBranch = master
