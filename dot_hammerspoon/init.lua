@@ -12,6 +12,9 @@ local excludedBundleIds = {
   ['com.microsoft.VSCode'] = true,
 }
 
+-- Copy Deeplink action on Raycast's Switch Windows command gives the exact URL
+local switchWindowsDeeplink = 'raycast://extensions/raycast/navigation/switch-windows'
+
 local flagMasks = hs.eventtap.event.rawFlagMasks
 local noModifier = 0
 local leftControl = flagMasks.control | flagMasks.deviceLeftControl
@@ -26,7 +29,7 @@ local modifierMask = flagMasks.shift | flagMasks.control | flagMasks.alternate |
   | flagMasks.deviceLeftCommand | flagMasks.deviceRightCommand
 
 local rules = {
-  { from = { flags = leftCommand, key = 'tab' }, to = { flags = noModifier, key = 'f13' } },
+  { from = { flags = leftCommand, key = 'tab' }, to = { url = switchWindowsDeeplink } },
   { from = { flags = leftControl, key = '[' }, to = { flags = noModifier, key = 'escape' } },
   { from = { flags = leftControl, key = 'm' }, to = { flags = noModifier, key = 'return' } },
   { from = { flags = leftControl, key = 'h' }, to = { flags = noModifier, key = 'delete' }, skipInExcludedApps = true },
@@ -57,31 +60,46 @@ local function isInExcludedApp()
   return app ~= nil and excludedBundleIds[app:bundleID()] == true
 end
 
+local swallowEvent = true
+local passEvent = false
+local autorepeatProperty = hs.eventtap.event.properties.keyboardEventAutorepeat
+
 -- Rewrites the original event so key repeat and key-up stay native; non-modifier bits are kept
 local function rewrite(event, rule)
   event:setKeyCode(hs.keycodes.map[rule.to.key])
   event:rawFlags((event:rawFlags() & ~modifierMask) | rule.to.flags)
-  return false
+  return passEvent
+end
+
+-- Opens the URL once per press; key repeat and key-up are swallowed so the app sees nothing
+local function openUrl(event, rule, isDown)
+  if isDown and event:getProperty(autorepeatProperty) == 0 then hs.urlevent.openURL(rule.to.url) end
+  return swallowEvent
+end
+
+local function apply(event, rule, isDown)
+  if rule.to.url ~= nil then return openUrl(event, rule, isDown) end
+  return rewrite(event, rule)
 end
 
 local function onKeyDown(event)
   local keyCode = event:getKeyCode()
   local rule = rulesByKeyCode[keyCode]
-  if rule == nil then return false end
-  if (event:rawFlags() & modifierMask) ~= rule.from.flags then return false end
-  if rule.skipInExcludedApps and isInExcludedApp() then return false end
+  if rule == nil then return passEvent end
+  if (event:rawFlags() & modifierMask) ~= rule.from.flags then return passEvent end
+  if rule.skipInExcludedApps and isInExcludedApp() then return passEvent end
 
   activeRulesByKeyCode[keyCode] = rule
-  return rewrite(event, rule)
+  return apply(event, rule, true)
 end
 
 local function onKeyUp(event)
   local keyCode = event:getKeyCode()
   local rule = activeRulesByKeyCode[keyCode]
-  if rule == nil then return false end
+  if rule == nil then return passEvent end
 
   activeRulesByKeyCode[keyCode] = nil
-  return rewrite(event, rule)
+  return apply(event, rule, false)
 end
 
 local function onKeyEvent(event)
