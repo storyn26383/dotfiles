@@ -11,3 +11,5 @@ tags.vendor
 .claude/settings.local.json
 .envrc
 .docs
+CLAUDE.local.md
+AGENTS.local.md
